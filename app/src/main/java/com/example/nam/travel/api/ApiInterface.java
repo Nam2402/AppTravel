@@ -9,7 +9,7 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    @GET("/place-category-of-place-Type/5")
+    @GET("/place-type/5/place-category")
     Call<CategoryPlacesResponse> getNameCategory();
 
     @GET("/location-profile-by-category/4")

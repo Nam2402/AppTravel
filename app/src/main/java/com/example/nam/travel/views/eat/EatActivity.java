@@ -1,18 +1,23 @@
 package com.example.nam.travel.views.eat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.PlaceCategoriesModel;
 import com.example.nam.travel.models.SingleItemModel;
 import com.example.nam.travel.views.adapter.RecyclerViewDataAdapter;
+import com.example.nam.travel.views.detailLocation.DetailLocationActivity;
 
 import java.util.ArrayList;
 
 public class EatActivity extends AppCompatActivity {
+    ImageView imageView;
 
     private ArrayList<PlaceCategoriesModel> allSampleData;
 
@@ -20,6 +25,7 @@ public class EatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eat);
+
 
         allSampleData = new ArrayList<>();
 
@@ -45,4 +51,28 @@ public class EatActivity extends AppCompatActivity {
         }
 
     }
+
+//    public void initControls(){
+//        imageView = (ImageView)findViewById(R.id.itemImage);
+//    }
+//
+//
+//    public void addEvents() {
+//                imageView.setOnClickListener(new View.OnClickListener() {
+//                    public void onClick(View arg0) {
+//
+//                        // Start NewActivity.class
+//                        Intent intent = new Intent(EatActivity.this, DetailLocationActivity.class);
+//                        startActivity(intent);
+//                    }
+//                });
+//    }
+
+
+
+
+
+
+
+
 }

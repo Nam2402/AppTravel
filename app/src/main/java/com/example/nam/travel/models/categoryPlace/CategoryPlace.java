@@ -1,7 +1,10 @@
 package com.example.nam.travel.models.categoryPlace;
 
+import com.example.nam.travel.models.locationOfPlaceCategory.Location;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by Nam on 10/17/2018.
@@ -17,6 +20,8 @@ public class CategoryPlace {
     @SerializedName("idPlaceType")
     @Expose
     private Integer idPlaceType;
+
+    private List<Location> locationList;
 
     /**
      * No args constructor for use in serialization
@@ -62,4 +67,11 @@ public class CategoryPlace {
         this.idPlaceType = idPlaceType;
     }
 
+    public List<Location> getLocationList() {
+        return locationList;
+    }
+
+    public void setLocationList(List<Location> locationList) {
+        this.locationList = locationList;
+    }
 }

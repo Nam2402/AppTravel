@@ -4,7 +4,9 @@ package com.example.nam.travel.views.adapter;
  * Created by Nam on 10/14/2018.
  */
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,11 @@ import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.SingleItemModel;
+import com.example.nam.travel.views.detailLocation.DetailLocationActivity;
 
 import java.util.ArrayList;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder>{
 
@@ -60,7 +65,9 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(view.getContegxt(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }

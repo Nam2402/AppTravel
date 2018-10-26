@@ -12,6 +12,7 @@
     <dimen name="btn_dang_dki">20sp</dimen>
 
     <dimen name="text_padding">10dp</dimen>
+    <dimen name="text_padding_left">20dp</dimen>
     <dimen name="text_line_spacing">8sp</dimen>
     <dimen name="text_size_large">20sp</dimen>
     <dimen name="text_size_medium">17sp</dimen>
