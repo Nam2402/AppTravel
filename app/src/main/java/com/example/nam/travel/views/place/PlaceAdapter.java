@@ -10,9 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.api.ApiImageClient;
+import com.example.nam.travel.api.ApiImageInterface;
 import com.example.nam.travel.models.categoryPlace.CategoryPlace;
 
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 
 /**
  * Created by Nam on 10/18/2018.
@@ -57,7 +62,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     @Override
     public void onBindViewHolder(PlaceViewHolder holder, final int position) {
         holder.itemTitle.setText(categoryPlaces.get(position).getName());
-
     }
 
     @Override
