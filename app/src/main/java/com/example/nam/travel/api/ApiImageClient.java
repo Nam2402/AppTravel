@@ -7,13 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Nam on 10/17/2018.
  */
 
-public class ApiClient {
-//    public static final String BASE_URL = "https://travellingrecommend.herokuapp.com/app";
-    public static final String BASE_URL = "https://192.168.1.137:8080";
+public class ApiImageClient {
+    public static final String BASE_URL = "https://travellingrecommend.herokuapp.com/images";
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(){
-        if(retrofit == null){
+    public static Retrofit getImageClient(){
+        if(retrofit ==null){
             retrofit =  new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())

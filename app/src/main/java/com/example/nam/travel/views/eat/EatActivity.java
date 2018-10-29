@@ -31,11 +31,11 @@ public class EatActivity extends AppCompatActivity {
 
         createDummyData();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(allSampleData, this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(allSampleData, this);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        recyclerView.setAdapter(adapter);
     }
 
     private void createDummyData() {

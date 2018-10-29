@@ -12,16 +12,19 @@ import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.PlaceCategoriesModel;
+import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
+import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDataAdapter.ItemRowHolder>{
 
-    private ArrayList<PlaceCategoriesModel> dataList;
+    private ArrayList<CategoryResponseDTO> dataList;
     private Context mContext;
     private RecyclerView.RecycledViewPool recycledViewPool;
 
-    public RecyclerViewDataAdapter(ArrayList<PlaceCategoriesModel> dataList, Context  mContext) {
+    public RecyclerViewDataAdapter(ArrayList<CategoryResponseDTO> dataList, Context  mContext) {
         this.dataList = dataList;
         this.mContext = mContext;
         recycledViewPool = new RecyclerView.RecycledViewPool();
@@ -36,10 +39,10 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
 
     @Override
     public void onBindViewHolder(ItemRowHolder holder, int position) {
-        final String sectionName = dataList.get(position).getHeaderTitle();
-        ArrayList singleSectionItems = dataList.get(position).getAllItemInSection();
+        final String sectionName = dataList.get(position).getName();
+        List<LocationForType> listLocationOfCategory = dataList.get(position).getListLocationOfCategory();
         holder.itemTitle.setText(sectionName);
-        SectionListDataAdapter adapter = new SectionListDataAdapter(singleSectionItems, mContext);
+        SectionListDataAdapter adapter = new SectionListDataAdapter(listLocationOfCategory, mContext);
         holder.recyclerView.setHasFixedSize(true);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         holder.recyclerView.setAdapter(adapter);
@@ -50,6 +53,8 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
                 Toast.makeText(view.getContext(), "Button More Clicked!" + sectionName, Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
     }
 
