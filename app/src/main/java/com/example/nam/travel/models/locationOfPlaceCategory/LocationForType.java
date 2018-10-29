@@ -78,4 +78,8 @@ public class LocationForType {
         this.pictureList = pictureList;
     }
 
+    @Override
+    public String toString() {
+        return this.getId() + " | " + this.getName() + " | " + this.getIntroduction() + " | " + this.getPictureList().get(0).getImage();
+    }
 }

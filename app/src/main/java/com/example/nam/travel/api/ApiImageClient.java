@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiImageClient {
-    public static final String BASE_URL = "https://travellingrecommend.herokuapp.com/images";
+    public static final String BASE_URL = "https://travellingrecommend.herokuapp.com/image";
+    public static final String URL_IMAGE_DEFAULT = "https://travellingrecommend.herokuapp.com/image/default.jpg";
     private static Retrofit retrofit = null;
 
     public static Retrofit getImageClient(){

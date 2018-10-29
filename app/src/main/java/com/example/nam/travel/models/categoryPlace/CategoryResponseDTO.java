@@ -49,4 +49,17 @@ public class CategoryResponseDTO {
     public void setListLocationOfCategory(List<LocationForType> listLocationOfCategory) {
         this.listLocationOfCategory = listLocationOfCategory;
     }
+
+    public String allLocationInfo() {
+        String result = "";
+        for(LocationForType locationForType : listLocationOfCategory) {
+            result = result + " \n " + locationForType.toString();
+        }
+
+        return result;
+    }
+    @Override
+    public String toString() {
+        return "ID : " + id + " | NAME : " + name + " | " + allLocationInfo();
+    }
 }

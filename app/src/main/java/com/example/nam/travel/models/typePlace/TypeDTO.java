@@ -37,4 +37,20 @@ public class TypeDTO {
     public void setListCategoryResponse(ArrayList<CategoryResponseDTO> listCategoryResponse) {
         this.listCategoryResponse = listCategoryResponse;
     }
+
+
+    public String allLocationInfo() {
+        String result = "";
+        for(CategoryResponseDTO locationForType : listCategoryResponse) {
+            result = result + " \n " + locationForType.toString();
+        }
+
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "topLocationOfTtype : " + topLocationOfType.toString() + " \n " +
+                "listCate : " + allLocationInfo();
+    }
 }

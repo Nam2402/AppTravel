@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
 import com.example.nam.travel.api.ApiImageInterface;
 import com.example.nam.travel.models.SingleItemModel;
@@ -58,7 +59,16 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         holder.tvDetail.setText(itemModel.getIntroduction());
         holder.tvTitle.setText(itemModel.getName());
 
-        Picasso.with(mContext).load("https://travellingrecommend.herokuapp.com/image/sun.jpg").into(holder.itemImage);
+        String urlImage = "";
+        if(itemModel.getPictureList().size() > 0) {
+            urlImage = itemModel.getPictureList().get(0).getImage();
+            urlImage = ApiClient.BASE_URL + "/image/" + urlImage;
+        } else
+        {
+            urlImage = ApiImageClient.URL_IMAGE_DEFAULT;
+        }
+
+        Picasso.with(mContext).load(ApiClient.BASE_URL + "/image/" + itemModel.getPictureList().get(0).getImage()).into(holder.itemImage);
 
 
 //        ApiImageInterface retrofitImageAPI = ApiImageClient.getImageClient().create(ApiImageInterface.class);
