@@ -13,8 +13,8 @@ public interface ApiInterface {
     @GET("/app/place-type/1")
     Call<TypeResponse> getNameCategory();
 
-    @GET("/location-profile-by-category/4")
-    Call<LocationResponse> getInfoLocation();
+//    @GET("/location-profile-by-category/4")
+//    Call<LocationResponse> getInfoLocation();
 
 
 

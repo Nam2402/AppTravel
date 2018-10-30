@@ -114,8 +114,8 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
                 @Override
                 public void onClick(View view) {
 //                    Toast.makeText(view.getContegxt(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
-                    mContext.startActivity(intent);
+//                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
+//                    mContext.startActivity(intent);
                 }
             });
         }

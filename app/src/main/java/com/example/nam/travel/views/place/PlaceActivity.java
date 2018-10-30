@@ -38,11 +38,7 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
     private TypeDTO typeDTO;
 
     private PlacePresenter placePresenter;
-    private LocationPresenter locationPresenter;
-    private RecyclerView recyclerView;
-    private PlaceAdapter placeAdapter;
-    private LocationAdapter locationAdapter;
-    private List<CategoryPlace> categoryPlaceList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,7 +14,7 @@ public interface IPlaceActivity {
 
     public void getPlaceFailure();
 
-    public void getLocationSuccess(List<Location> locationList);
-
-    public void getLocationFailure();
+//    public void getLocationSuccess(List<Location> locationList);
+//
+//    public void getLocationFailure();
 }
