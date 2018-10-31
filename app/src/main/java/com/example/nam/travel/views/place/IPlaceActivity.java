@@ -1,6 +1,6 @@
 package com.example.nam.travel.views.place;
 
-import com.example.nam.travel.models.categoryPlace.CategoryPlace;
+import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public interface IPlaceActivity {
-    public void getPlaceSuccess(List<CategoryPlace> categoryPlaceList);
+    public void getPlaceSuccess(List<CategoryResponseDTO> categoryResponseDTOS);
 
     public void getPlaceFailure();
 }

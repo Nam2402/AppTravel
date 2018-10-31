@@ -30,7 +30,11 @@
         <activity android:name=".views.shopping.ShoppingActivity" />
         <activity android:name=".views.place.PlaceActivity" />
         <activity android:name=".views.login.EditProfileActivity" />
-        <activity android:name=".views.detailLocation.DetailLocationActivity"></activity>
+        <activity android:name=".views.detailLocation.DetailLocationActivity" />
+        <activity android:name=".views.location.detailLocation.DetailLocationActivity" />
+        <activity android:name=".views.location.allLocation.AllLocationActivity" />
+        <activity android:name=".views.location.detailLocation.CommentActivity" />
+        <activity android:name=".views.location.detailLocation.NoteActivity"></activity>
     </application>
 
 </manifest>

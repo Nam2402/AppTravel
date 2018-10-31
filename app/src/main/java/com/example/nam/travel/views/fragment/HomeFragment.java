@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.nam.travel.R;
-import com.example.nam.travel.views.eat.EatActivity;
 import com.example.nam.travel.views.place.PlaceActivity;
-import com.example.nam.travel.views.rest.RestActivity;
-import com.example.nam.travel.views.shopping.ShoppingActivity;
+
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
   Button btnPlace, btnEat, btnRest,btnShopping;
@@ -58,13 +56,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         startActivity(new Intent(getActivity(),PlaceActivity.class));
         break;
       case R.id.btn_eat:
-        startActivity(new Intent(getActivity(), EatActivity.class));
+        startActivity(new Intent(getActivity(), PlaceActivity.class));
         break;
       case  R.id.btn_rest:
-        startActivity(new Intent(getActivity(), RestActivity.class));
+        startActivity(new Intent(getActivity(), PlaceActivity.class));
         break;
       case R.id.btn_shopping:
-        startActivity(new Intent(getActivity(), ShoppingActivity.class));
+        startActivity(new Intent(getActivity(), PlaceActivity.class));
         break;
 
     }

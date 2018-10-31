@@ -5,35 +5,22 @@ package com.example.nam.travel.views.adapter;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.api.ApiImageInterface;
-import com.example.nam.travel.models.SingleItemModel;
 import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
+import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder>{
 
@@ -56,7 +43,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     public void onBindViewHolder(final SingleItemRowHolder holder, int position) {
         LocationForType itemModel = itemModels.get(position);
 
-        holder.tvDetail.setText(itemModel.getIntroduction());
         holder.tvTitle.setText(itemModel.getName());
 
         String urlImage = "";
@@ -106,17 +92,16 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
 
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvDetail;
 
         public SingleItemRowHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tvTitle);
             this.itemImage = itemView.findViewById(R.id.itemImage);
-            this.tvDetail = itemView.findViewById(R.id.tvDetail);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }

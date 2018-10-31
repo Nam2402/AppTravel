@@ -1,15 +1,15 @@
-package com.example.nam.travel.views.detailLocation;
+package com.example.nam.travel.views.location.detailLocation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.nam.travel.R;
 
-public class DetailLocationActivity extends AppCompatActivity {
+public class CommentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_location);
+        setContentView(R.layout.activity_comment);
     }
 }
