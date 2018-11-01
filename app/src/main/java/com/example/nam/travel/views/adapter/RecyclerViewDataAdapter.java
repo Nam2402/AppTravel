@@ -42,7 +42,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         final String sectionName = dataList.get(position).getName();
         List<LocationForType> listLocationOfCategory = dataList.get(position).getListLocationOfCategory();
         holder.itemTitle.setText(sectionName);
-        SectionListDataAdapter adapter = new SectionListDataAdapter(listLocationOfCategory, mContext);
+        LocationListDataAdapter adapter = new LocationListDataAdapter(listLocationOfCategory, mContext);
         holder.recyclerView.setHasFixedSize(true);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         holder.recyclerView.setAdapter(adapter);

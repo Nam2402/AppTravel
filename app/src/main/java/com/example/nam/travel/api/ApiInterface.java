@@ -1,5 +1,6 @@
 package com.example.nam.travel.api;
 
+import com.example.nam.travel.models.newLocation.NewLocationResponse;
 import com.example.nam.travel.models.typePlace.TypeResponse;
 
 import retrofit2.Call;
@@ -9,6 +10,9 @@ public interface ApiInterface {
 
     @GET("/app/place-type/3")
     Call<TypeResponse> getNameCategory();
+
+    @GET("/locations")
+    Call<NewLocationResponse> getInfoNewLocation();
 
 //    @GET("/location-profile-by-category/4")
 //    Call<LocationResponse> getInfoLocation();

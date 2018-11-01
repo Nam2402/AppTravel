@@ -22,12 +22,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder>{
+public class LocationListDataAdapter extends RecyclerView.Adapter<LocationListDataAdapter.SingleItemRowHolder>{
 
     private List<LocationForType> itemModels;
     private Context mContext;
 
-    public SectionListDataAdapter(List<LocationForType> itemModels, Context mContext) {
+    public LocationListDataAdapter(List<LocationForType> itemModels, Context mContext) {
         this.itemModels = itemModels;
         this.mContext = mContext;
     }
@@ -48,13 +48,13 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
-            urlImage = ApiClient.BASE_URL + "/image/" + urlImage;
+            urlImage = ApiClient.BASE_URL + "/downloadFile/" + urlImage;
         } else
         {
             urlImage = ApiImageClient.URL_IMAGE_DEFAULT;
         }
 
-        Picasso.with(mContext).load(ApiClient.BASE_URL + "/image/" + itemModel.getPictureList().get(0).getImage()).into(holder.itemImage);
+        Picasso.with(mContext).load(urlImage).into(holder.itemImage);
 
 
 //        ApiImageInterface retrofitImageAPI = ApiImageClient.getImageClient().create(ApiImageInterface.class);

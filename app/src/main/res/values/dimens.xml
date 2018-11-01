@@ -11,6 +11,7 @@
     <dimen name="logo_w_h">100dp</dimen>
     <dimen name="btn_dang_dki">20sp</dimen>
 
+
     <dimen name="text_padding">10dp</dimen>
     <dimen name="text_padding_left">20dp</dimen>
     <dimen name="text_line_spacing">8sp</dimen>
@@ -57,4 +58,16 @@
     <dimen name="lv_location_tv_deatail_margin_top">2dp</dimen>
     <dimen name="lv_location_tv_detail_size">11dp</dimen>
     <dimen name="lv_location_line_height">1dp</dimen>
+    <dimen name="card_margin">10dp</dimen>
+    <dimen name="card_location">0dp</dimen>
+    <dimen name="location_title_padding">10dp</dimen>
+
+    <dimen name="location_title">18dp</dimen>
+    <dimen name="card_album_radius">0dp</dimen>
+    <dimen name="location_height">220dp</dimen>
+    <dimen name="address">12dp</dimen>
+    <dimen name="address_padding_bottom">5dp</dimen>
+
+    <dimen name="image_location_width">200dp</dimen>
+    <dimen name="image_location_height">150dp</dimen>
 </resources>

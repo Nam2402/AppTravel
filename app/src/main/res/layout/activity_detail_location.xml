@@ -160,7 +160,7 @@
                                 android:layout_weight="1"
                                 android:src="@drawable/ic_favorite_border_black_24dp"
                                 android:padding="5dip"
-                                android:onClick="reviewItineary"
+
 
                                 />
 
