@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import com.example.nam.travel.R;
 
 
-public class HiglightLocationFragment extends Fragment {
-    public HiglightLocationFragment(){
+public class HighlightLocationFragment extends Fragment {
+    public HighlightLocationFragment(){
 
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_higlight_location, container, false);
+        View view = inflater.inflate(R.layout.fragment_highlight_location, container, false);
 
 
         return view;

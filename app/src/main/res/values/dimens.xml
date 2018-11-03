@@ -37,8 +37,8 @@
 
     <dimen name="image_height_large">350dp</dimen>
     <dimen name="image_width_large">350dp</dimen>
-    <dimen name="image_width_medium">250dp</dimen>
-    <dimen name="image_height_medium">250dp</dimen>
+    <dimen name="image_width_medium">200dp</dimen>
+    <dimen name="image_height_medium">200dp</dimen>
 
     <dimen name="button_accept_size">80dp</dimen>
 
@@ -48,7 +48,7 @@
 
     <dimen name="emoji_size">28sp</dimen>
 
-    <dimen name="lv_location_img_height">0dp</dimen>
+    <dimen name="lv_location_img_height">40dp</dimen>
     <dimen name="lv_location_img_weight">80dp</dimen>
     <dimen name="lv_location_img_margin_left">10dp</dimen>
     <dimen name="lv_location_img_top">10dp</dimen>
@@ -70,4 +70,21 @@
 
     <dimen name="image_location_width">200dp</dimen>
     <dimen name="image_location_height">150dp</dimen>
+
+    <dimen name="img_view">150dp</dimen>
+    <dimen name="avatar_width">200dp</dimen>
+    <dimen name="avatar_height">200dp</dimen>
+    <dimen name="avatar_pading">30dp</dimen>
+    <dimen name="avatar_marginTop">-120dp</dimen>
+    <dimen name="avatar_elevation">5dp</dimen>
+
+    <dimen name="img_edit_margin">14dp</dimen>
+    <dimen name="tv_name_marginTop">70dp</dimen>
+    <dimen name="tv_email_marginTop">10dp</dimen>
+    <dimen name="profile_paddingTop">20dp</dimen>
+    <dimen name="profile_paddingBottom">20dp</dimen>
+    <dimen name="profile_paddingLeft">5dp</dimen>
+    <dimen name="profile_paddingRight">5dp</dimen>
+
+
 </resources>

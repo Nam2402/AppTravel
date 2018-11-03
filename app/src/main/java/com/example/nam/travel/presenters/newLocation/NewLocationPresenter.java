@@ -1,4 +1,4 @@
-package com.example.nam.travel.presenters.places.newLocation;
+package com.example.nam.travel.presenters.newLocation;
 
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiInterface;

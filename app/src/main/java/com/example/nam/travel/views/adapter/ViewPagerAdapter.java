@@ -4,6 +4,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.nam.travel.views.fragment.HighlightLocationFragment;
 import com.example.nam.travel.views.fragment.HomeFragment;
 
 import com.example.nam.travel.views.fragment.NewLocationFragment;
@@ -27,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new NewLocationFragment();
             case 2:
-                return new HomeFragment();
+                return new HighlightLocationFragment();
             case 3:
                 return new ProfileFragment();
         }

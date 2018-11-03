@@ -3,17 +3,30 @@ package com.example.nam.travel.views.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
+import com.example.nam.travel.views.adapter.NewLocationAdapter;
+import com.example.nam.travel.views.adapter.RecommendLocationAdapter;
+import com.example.nam.travel.views.newLocation.INewLocation;
 import com.example.nam.travel.views.place.PlaceActivity;
 
+import java.util.List;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+
+public class HomeFragment extends Fragment implements View.OnClickListener , INewLocation {
   Button btnPlace, btnEat, btnRest,btnShopping;
+  private NewLocationPresenter newLocationPresenter;
+  private RecyclerView recyclerView;
+  private RecommendLocationAdapter recommendLocationAdapter;
+  private List<NewLocation> newLocationList;
 
   public HomeFragment(){
 
@@ -26,6 +39,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
       initControls(view);
       addEvents();
+
+      recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
+      recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+      newLocationPresenter= new NewLocationPresenter(this);
+      getDataLocation();
 
 
 
@@ -66,6 +84,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         break;
 
     }
+
+  }
+
+  private void getDataLocation() {
+    //get data place
+    newLocationPresenter.getNewLocation();
+  }
+
+
+
+  @Override
+  public void getNewLocationSuccess(List<NewLocation> newLocations) {
+    this.newLocationList = newLocations;
+    if (newLocations != null) {
+      recommendLocationAdapter = new RecommendLocationAdapter(newLocations,getContext());
+      recyclerView.setAdapter(recommendLocationAdapter);
+    }
+
+  }
+
+
+
+  @Override
+  public void getNewLocationFailure() {
 
   }
 }

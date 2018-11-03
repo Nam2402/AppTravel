@@ -1,6 +1,7 @@
 package com.example.nam.travel.views.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +66,8 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }

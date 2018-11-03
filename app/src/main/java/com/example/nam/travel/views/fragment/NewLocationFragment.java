@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.newLocation.NewLocation;
-import com.example.nam.travel.presenters.places.newLocation.NewLocationPresenter;
+import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
 import com.example.nam.travel.views.adapter.NewLocationAdapter;
 import com.example.nam.travel.views.newLocation.INewLocation;
 

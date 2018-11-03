@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Travel</string>
+    <string name="app_name">DN Travel</string>
     <string name="hint_email">Email</string>
     <string name="hint_name">Name</string>
     <string name="hint_pass">Password</string>
@@ -38,6 +38,13 @@
     <string name="textview.text.edit_profile_title">Edit Profile</string>
     <string name="textview.text.edit_profile_name">Name*</string>
     <string name="textview.hint.edit_profile_name">Your name</string>
+    <string name="textview.text.edit_profile_sex_male">Nam</string>
+    <string name="textview.text.edit_profile_sex_female">Nữ</string>
+
+    <string name="textview.text.edit_profile_address">Address</string>
+    <string name="textview.hint.edit_profile_address">Your address</string>
+    <string name="textview.text.edit_profile_phone">Phone</string>
+    <string name="textview.hint.edit_profile_phone">Your phone</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

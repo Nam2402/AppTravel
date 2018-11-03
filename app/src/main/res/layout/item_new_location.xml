@@ -23,7 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/location_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_toppicture"
                 />
