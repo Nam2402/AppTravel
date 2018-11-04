@@ -34,25 +34,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IRe
   public HomeFragment(){
 
   }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-      View view = inflater.inflate(R.layout.fragment_home, container, false);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-      initControls(view);
-      addEvents();
+    initControls(view);
+    addEvents();
 
-      recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
-      recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-      recommendLocationPresenter= new RecommendLocationPresenter(this);
-      getDataLocation();
-
-
+    recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
+    recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+    recommendLocationPresenter= new RecommendLocationPresenter(this);
+    getDataLocation();
 
 
-        return view;
-    }
+
+
+    return view;
+  }
 
 
 
