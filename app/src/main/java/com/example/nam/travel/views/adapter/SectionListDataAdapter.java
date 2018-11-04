@@ -112,7 +112,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tvTitle);
             this.itemImage = itemView.findViewById(R.id.itemImage);
-            this.tvDetail = itemView.findViewById(R.id.tvDetail);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
