@@ -57,30 +57,6 @@ public class LocationListDataAdapter extends RecyclerView.Adapter<LocationListDa
         Picasso.with(mContext).load(urlImage).into(holder.itemImage);
 
 
-//        ApiImageInterface retrofitImageAPI = ApiImageClient.getImageClient().create(ApiImageInterface.class);
-//        Call<ResponseBody> call;
-//        if (itemModel.getPictureList().size() > 0) {
-//            String imageName = itemModel.getPictureList().get(0).getImage();
-//            call = retrofitImageAPI.getImageDetails(imageName);
-//        } else {
-//            call = retrofitImageAPI.getImageDetails("default_avatar.png");
-//        }
-//        call.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-//                if (response.isSuccessful()) {
-//                    if (response.body() != null) {
-//                        Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
-//                        holder.itemImage.setImageBitmap(bitmap);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
     }
 
     @Override

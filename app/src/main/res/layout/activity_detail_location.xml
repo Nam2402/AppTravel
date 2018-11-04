@@ -127,13 +127,13 @@
                             android:weightSum="2">
 
                             <ImageView
+                                android:id="@+id/show_dropdown_menu"
                                 android:layout_width="match_parent"
                                 android:layout_height="fill_parent"
                                 android:layout_weight="1"
                                 android:background="@color/white"
                                 android:src="@drawable/ic_call_black_24dp"
                                 android:padding="5dip"
-
 
                                 />
 

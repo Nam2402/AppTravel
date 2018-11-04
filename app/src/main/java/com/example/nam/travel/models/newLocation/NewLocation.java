@@ -1,7 +1,10 @@
 package com.example.nam.travel.models.newLocation;
 
+import com.example.nam.travel.models.location.Picture;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by Nam on 10/31/2018.
@@ -20,27 +23,33 @@ public class NewLocation {
     @SerializedName("createdDate")
     @Expose
     private String createdDate;
-    @SerializedName("idPlaceCategory")
+    @SerializedName("placeCategory")
     @Expose
-    private Integer idPlaceCategory;
-    @SerializedName("idContent")
+    private String placeCategory;
+    @SerializedName("content")
     @Expose
-    private Integer idContent;
-    @SerializedName("idStatus")
+    private String content;
+    @SerializedName("status")
     @Expose
-    private Integer idStatus;
-    @SerializedName("idAddress")
+    private String status;
+    @SerializedName("address")
     @Expose
-    private Integer idAddress;
-    @SerializedName("idContact")
+    private String address;
+    @SerializedName("phone")
     @Expose
-    private Integer idContact;
-    @SerializedName("idUser")
+    private String phone;
+    @SerializedName("email")
     @Expose
-    private Integer idUser;
-    @SerializedName("idDuration")
+    private String email;
+    @SerializedName("usersname")
     @Expose
-    private Integer idDuration;
+    private Object usersname;
+    @SerializedName("duration")
+    @Expose
+    private Object duration;
+    @SerializedName("pictureList")
+    @Expose
+    private List<Picture> pictureList = null;
 
     /**
      * No args constructor for use in serialization
@@ -51,31 +60,35 @@ public class NewLocation {
 
     /**
      *
+     * @param content
      * @param id
-     * @param idStatus
-     * @param idContact
-     * @param idDuration
+     * @param duration
+     * @param phone
+     * @param usersname
+     * @param email
+     * @param address
+     * @param status
+     * @param placeCategory
      * @param name
-     * @param idUser
-     * @param idPlaceCategory
-     * @param idContent
+     * @param pictureList
      * @param createdDate
-     * @param idAddress
      * @param introduction
      */
-    public NewLocation(Integer id, String name, String introduction, String createdDate, Integer idPlaceCategory, Integer idContent, Integer idStatus, Integer idAddress, Integer idContact, Integer idUser, Integer idDuration) {
+    public NewLocation(Integer id, String name, String introduction, String createdDate, String placeCategory, String content, String status, String address, String phone, String email, Object usersname, Object duration, List<Picture> pictureList) {
         super();
         this.id = id;
         this.name = name;
         this.introduction = introduction;
         this.createdDate = createdDate;
-        this.idPlaceCategory = idPlaceCategory;
-        this.idContent = idContent;
-        this.idStatus = idStatus;
-        this.idAddress = idAddress;
-        this.idContact = idContact;
-        this.idUser = idUser;
-        this.idDuration = idDuration;
+        this.placeCategory = placeCategory;
+        this.content = content;
+        this.status = status;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.usersname = usersname;
+        this.duration = duration;
+        this.pictureList = pictureList;
     }
 
     public Integer getId() {
@@ -110,59 +123,75 @@ public class NewLocation {
         this.createdDate = createdDate;
     }
 
-    public Integer getIdPlaceCategory() {
-        return idPlaceCategory;
+    public String getPlaceCategory() {
+        return placeCategory;
     }
 
-    public void setIdPlaceCategory(Integer idPlaceCategory) {
-        this.idPlaceCategory = idPlaceCategory;
+    public void setPlaceCategory(String placeCategory) {
+        this.placeCategory = placeCategory;
     }
 
-    public Integer getIdContent() {
-        return idContent;
+    public String getContent() {
+        return content;
     }
 
-    public void setIdContent(Integer idContent) {
-        this.idContent = idContent;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public Integer getIdStatus() {
-        return idStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setIdStatus(Integer idStatus) {
-        this.idStatus = idStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Integer getIdAddress() {
-        return idAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setIdAddress(Integer idAddress) {
-        this.idAddress = idAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Integer getIdContact() {
-        return idContact;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setIdContact(Integer idContact) {
-        this.idContact = idContact;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Integer getIdDuration() {
-        return idDuration;
+    public Object getUsersname() {
+        return usersname;
     }
 
-    public void setIdDuration(Integer idDuration) {
-        this.idDuration = idDuration;
+    public void setUsersname(Object usersname) {
+        this.usersname = usersname;
+    }
+
+    public Object getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Object duration) {
+        this.duration = duration;
+    }
+
+    public List<Picture> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<Picture> pictureList) {
+        this.pictureList = pictureList;
     }
 }

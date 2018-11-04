@@ -13,8 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.api.ApiClient;
+import com.example.nam.travel.api.ApiImageClient;
 import com.example.nam.travel.models.newLocation.NewLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,17 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
         NewLocation itemModel = newLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
+        holder.tvAddress.setText(itemModel.getAddress());
+        String urlImage = "";
+        if(itemModel.getPictureList().size() > 0) {
+            urlImage = itemModel.getPictureList().get(0).getImage();
+            urlImage = ApiClient.BASE_URL + "/downloadFile/" + urlImage;
+        } else
+        {
+            urlImage = ApiImageClient.URL_IMAGE_DEFAULT;
+        }
+
+        Picasso.with(mContext).load(urlImage).into(holder.itemImage);
     }
 
     @Override
@@ -56,13 +70,13 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvDetail;
+        protected TextView tvAddress;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_title);
             this.itemImage = itemView.findViewById(R.id.image_location);
-            this.tvDetail = itemView.findViewById(R.id.address);
+            this.tvAddress = itemView.findViewById(R.id.address);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -11,7 +11,7 @@ public interface ApiInterface {
     @GET("/app/place-type/3")
     Call<TypeResponse> getNameCategory();
 
-    @GET("/locations")
+    @GET("/location-profile-by-category/42")
     Call<NewLocationResponse> getInfoNewLocation();
 
 //    @GET("/location-profile-by-category/4")

@@ -11,8 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.api.ApiClient;
+import com.example.nam.travel.api.ApiImageClient;
 import com.example.nam.travel.models.newLocation.NewLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,7 +26,6 @@ import java.util.List;
 public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLocationAdapter.ItemLocationHolder> {
     private List<NewLocation> newLocationArrayList;
     private Context mContext;
-
 
     public RecommendLocationAdapter(List<NewLocation> newLocationArrayList, Context mContext) {
         this.newLocationArrayList = newLocationArrayList;
@@ -43,6 +45,18 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
         NewLocation itemModel = newLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
+        holder.tvAddress.setText(itemModel.getAddress());
+        String urlImage = "";
+        if(itemModel.getPictureList().size() > 0) {
+            urlImage = itemModel.getPictureList().get(0).getImage();
+            urlImage = ApiClient.BASE_URL + "/downloadFile/" + urlImage;
+        } else
+        {
+            urlImage = ApiImageClient.URL_IMAGE_DEFAULT;
+        }
+
+        Picasso.with(mContext).load(urlImage).into(holder.itemImage);
+
     }
 
     @Override
@@ -53,13 +67,13 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvDetail;
+        protected TextView tvAddress;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_location_name);
             this.itemImage = itemView.findViewById(R.id.img_rc_location);
-            this.tvDetail = itemView.findViewById(R.id.tv_location_address);
+            this.tvAddress = itemView.findViewById(R.id.tv_location_address);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -14,8 +14,8 @@
         <ImageView
             android:id="@+id/img_rc_location"
             android:layout_weight="1"
-            android:layout_width="@dimen/lv_location_img_height"
-            android:layout_height="@dimen/lv_location_img_weight"
+            android:layout_width="@dimen/rc_location_img_width"
+            android:layout_height="@dimen/rc_location_img_height"
             android:layout_marginLeft="@dimen/lv_location_img_margin_left"
             android:src="@drawable/ic_toppicture"
             android:layout_marginTop="@dimen/lv_location_img_top"
