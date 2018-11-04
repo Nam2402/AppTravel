@@ -14,6 +14,7 @@ import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
 import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.recommendLocation.RecommendLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
@@ -24,11 +25,11 @@ import java.util.List;
  */
 
 public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLocationAdapter.ItemLocationHolder> {
-    private List<NewLocation> newLocationArrayList;
+    private List<RecommendLocation> recommendLocations;
     private Context mContext;
 
-    public RecommendLocationAdapter(List<NewLocation> newLocationArrayList, Context mContext) {
-        this.newLocationArrayList = newLocationArrayList;
+    public RecommendLocationAdapter(List<RecommendLocation> recommendLocations, Context mContext) {
+        this.recommendLocations = recommendLocations;
         this.mContext = mContext;
     }
 
@@ -43,9 +44,8 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
 
     @Override
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
-        NewLocation itemModel = newLocationArrayList.get(position);
+        RecommendLocation itemModel = recommendLocations.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvAddress.setText(itemModel.getAddress());
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -61,19 +61,18 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
 
     @Override
     public int getItemCount() {
-        return (null != newLocationArrayList ? newLocationArrayList.size() : 0);
+        return (null != recommendLocations ? recommendLocations.size() : 0);
     }
 
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvAddress;
+        protected TextView tvCount;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_location_name);
             this.itemImage = itemView.findViewById(R.id.img_rc_location);
-            this.tvAddress = itemView.findViewById(R.id.tv_location_address);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

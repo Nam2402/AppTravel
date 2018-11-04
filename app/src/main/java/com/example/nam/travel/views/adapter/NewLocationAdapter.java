@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,8 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
         NewLocation itemModel = newLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvAddress.setText(itemModel.getAddress());
+        holder.tvCount.setText(itemModel.getSumRating() + " đánh giá");
+        holder.ratingBar.setRating(itemModel.getNumRating());
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -70,13 +72,15 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvAddress;
+        protected TextView tvCount;
+        protected RatingBar ratingBar;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_title);
             this.itemImage = itemView.findViewById(R.id.image_location);
-            this.tvAddress = itemView.findViewById(R.id.address);
+            this.ratingBar = itemView.findViewById(R.id.ratingBar);
+            this.tvCount = itemView.findViewById(R.id.count);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -25,12 +25,8 @@
         <!-- <activity android:name=".MainActivity" /> -->
         <activity android:name=".views.login.SignupActivity" />
         <activity android:name=".views.login.LoginActivity" />
-        <activity android:name=".views.eat.EatActivity" />
-        <activity android:name=".views.rest.RestActivity" />
-        <activity android:name=".views.shopping.ShoppingActivity" />
         <activity android:name=".views.place.PlaceActivity" />
         <activity android:name=".views.login.EditProfileActivity" />
-        <activity android:name=".views.detailLocation.DetailLocationActivity" />
         <activity android:name=".views.location.detailLocation.DetailLocationActivity" />
         <activity android:name=".views.location.allLocation.AllLocationActivity" />
         <activity android:name=".views.location.detailLocation.CommentActivity" />

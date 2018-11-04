@@ -12,21 +12,24 @@ import android.widget.Button;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.recommendLocation.RecommendLocation;
 import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
+import com.example.nam.travel.presenters.recommendLocation.RecommendLocationPresenter;
 import com.example.nam.travel.views.adapter.NewLocationAdapter;
 import com.example.nam.travel.views.adapter.RecommendLocationAdapter;
 import com.example.nam.travel.views.newLocation.INewLocation;
 import com.example.nam.travel.views.place.PlaceActivity;
+import com.example.nam.travel.views.recommendLocation.IRecommendLocation;
 
 import java.util.List;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener , INewLocation {
+public class HomeFragment extends Fragment implements View.OnClickListener , IRecommendLocation {
   Button btnPlace, btnEat, btnRest,btnShopping;
-  private NewLocationPresenter newLocationPresenter;
+  private RecommendLocationPresenter recommendLocationPresenter;
   private RecyclerView recyclerView;
   private RecommendLocationAdapter recommendLocationAdapter;
-  private List<NewLocation> newLocationList;
+  private List<RecommendLocation> recommendLocations;
 
   public HomeFragment(){
 
@@ -42,7 +45,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , INe
 
       recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
       recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-      newLocationPresenter= new NewLocationPresenter(this);
+      recommendLocationPresenter= new RecommendLocationPresenter(this);
       getDataLocation();
 
 
@@ -89,16 +92,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener , INe
 
   private void getDataLocation() {
     //get data place
-    newLocationPresenter.getNewLocation();
+    recommendLocationPresenter.getRecommendLocation();
   }
 
 
 
   @Override
-  public void getNewLocationSuccess(List<NewLocation> newLocations) {
-    this.newLocationList = newLocations;
-    if (newLocations != null) {
-      recommendLocationAdapter = new RecommendLocationAdapter(newLocations,getContext());
+  public void getRecommendLocationSuccess(List<RecommendLocation> recommendLocations) {
+    this.recommendLocations = recommendLocations;
+    if (recommendLocations != null) {
+      recommendLocationAdapter = new RecommendLocationAdapter(recommendLocations,getContext());
       recyclerView.setAdapter(recommendLocationAdapter);
     }
 
@@ -107,7 +110,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , INe
 
 
   @Override
-  public void getNewLocationFailure() {
+  public void getRecommendLocationFailure() {
 
   }
 }

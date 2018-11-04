@@ -18,8 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
  * Created by Nam on 11/3/2018.
  */
@@ -47,7 +45,6 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
         NewLocation itemModel = newLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvAddress.setText(itemModel.getAddress());
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -67,18 +64,18 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
 
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
-        protected CircleImageView itemImage;
+        protected ImageView itemImage;
         protected TextView tvAddress;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_all_location_name);
             this.itemImage = itemView.findViewById(R.id.img_all_location);
-            this.tvAddress = itemView.findViewById(R.id.tv_all_location_address);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
                 }
             });
