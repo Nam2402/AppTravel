@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_screen"
+
     tools:context="com.example.nam.travel.views.login.SignupActivity">
 
     <android.support.design.widget.TextInputLayout
@@ -14,19 +16,7 @@
         android:layout_marginTop="150dp"
 
         >
-        <EditText
-            android:id="@+id/edt_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/edt_margin_left"
-            android:layout_marginRight="@dimen/edt_margin_right"
-            android:layout_marginTop="@dimen/edt_margin_top"
-            android:layout_marginBottom="@dimen/edt_margin_bottom"
-            android:padding="@dimen/text_padding"
-            android:textColor="@color/black"
-            android:hint="@string/hint_name"
-            android:textSize="@dimen/text_size_large"
-            android:inputType="textEmailAddress" />
+
 
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout

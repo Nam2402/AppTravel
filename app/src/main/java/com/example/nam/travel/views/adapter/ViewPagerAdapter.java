@@ -4,8 +4,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.nam.travel.views.fragment.HighlightLocationFragment;
 import com.example.nam.travel.views.fragment.HomeFragment;
 
+import com.example.nam.travel.views.fragment.NewLocationFragment;
 import com.example.nam.travel.views.fragment.ProfileFragment;
 
 /**
@@ -24,9 +27,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new HomeFragment();
 
             case 1:
-                return new HomeFragment();
+                return new NewLocationFragment();
             case 2:
-                return new HomeFragment();
+                return new HighlightLocationFragment();
             case 3:
                 return new ProfileFragment();
         }
@@ -41,9 +44,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return "Trang chủ";
             case 1:
-                return "Khám phá";
-            case 2:
                 return "Tin mới";
+            case 2:
+                return "Nổi bật";
             case 3:
                 return "Cá nhân";
             default:

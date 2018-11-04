@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         final ImageView mapImage = mapView.findViewById(R.id.img_tab);
         TextView mapText = mapView.findViewById(R.id.txt_name_tab);
         mapImage.setImageResource(R.drawable.ic_update_black_24dp);
-        mapText.setText("Khám phá");
+        mapText.setText("Tin mới");
 
         View chatView = getLayoutInflater().inflate(R.layout.custom_tab,null);
         final ImageView chatImage = chatView.findViewById(R.id.img_tab);
         TextView chatText = chatView.findViewById(R.id.txt_name_tab);
         chatImage.setImageResource(R.drawable.ic_notifications_black_24dp);
-        chatText.setText("Tin mới");
+        chatText.setText("Nổi bật");
 
 
         View profileView = getLayoutInflater().inflate(R.layout.custom_tab,null);

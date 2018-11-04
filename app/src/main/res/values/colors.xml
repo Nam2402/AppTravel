@@ -17,4 +17,6 @@
     <color name="colorOpacity">#da161b1d</color>
     <color name="greenCircle">#780dff00</color>
     <color name="tabBarColor">#31353F</color>
+    <color name="Viewline">#e6eaea</color>
+    <color name="location_title">#4c4c4c</color>
 </resources>
