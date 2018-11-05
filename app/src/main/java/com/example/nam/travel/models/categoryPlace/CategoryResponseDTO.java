@@ -1,12 +1,10 @@
 package com.example.nam.travel.models.categoryPlace;
 
-import com.example.nam.travel.models.location.LocationProfile;
-import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryResponseDTO {
@@ -18,9 +16,9 @@ public class CategoryResponseDTO {
     private String name;
     @SerializedName("listLocationOfCategory")
     @Expose
-    private List<LocationForType> listLocationOfCategory;
+    private List<BaseLocation> listLocationOfCategory;
 
-    public CategoryResponseDTO(Long id, String name, List<LocationForType> listLocationOfCategory) {
+    public CategoryResponseDTO(Long id, String name, List<BaseLocation> listLocationOfCategory) {
         this.id = id;
         this.name = name;
         this.listLocationOfCategory = listLocationOfCategory;
@@ -42,18 +40,18 @@ public class CategoryResponseDTO {
         this.name = name;
     }
 
-    public List<LocationForType> getListLocationOfCategory() {
+    public List<BaseLocation> getListLocationOfCategory() {
         return listLocationOfCategory;
     }
 
-    public void setListLocationOfCategory(List<LocationForType> listLocationOfCategory) {
+    public void setListLocationOfCategory(List<BaseLocation> listLocationOfCategory) {
         this.listLocationOfCategory = listLocationOfCategory;
     }
 
     public String allLocationInfo() {
         String result = "";
-        for(LocationForType locationForType : listLocationOfCategory) {
-            result = result + " \n " + locationForType.toString();
+        for(BaseLocation baseLocation : listLocationOfCategory) {
+            result = result + " \n " + baseLocation.toString();
         }
 
         return result;

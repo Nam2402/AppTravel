@@ -1,6 +1,6 @@
 package com.example.nam.travel.views.newLocation;
 
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public interface INewLocation {
-    public void getNewLocationSuccess(List<NewLocation> newLocationList);
+    public void getNewLocationSuccess(List<BaseLocation> baseLocationList);
 
     public void getNewLocationFailure();
 }

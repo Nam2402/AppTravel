@@ -1,5 +1,6 @@
 package com.example.nam.travel.models.newLocation;
 
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,7 +19,7 @@ public class NewLocationResponse {
     private String resultMessage;
     @SerializedName("data")
     @Expose
-    private List<NewLocation> data = null;
+    private List<BaseLocation> data = null;
 
     /**
      * No args constructor for use in serialization
@@ -33,7 +34,7 @@ public class NewLocationResponse {
      * @param resultCode
      * @param resultMessage
      */
-    public NewLocationResponse(Integer resultCode, String resultMessage, List<NewLocation> data) {
+    public NewLocationResponse(Integer resultCode, String resultMessage, List<BaseLocation> data) {
         super();
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
@@ -56,11 +57,11 @@ public class NewLocationResponse {
         this.resultMessage = resultMessage;
     }
 
-    public List<NewLocation> getData() {
+    public List<BaseLocation> getData() {
         return data;
     }
 
-    public void setData(List<NewLocation> data) {
+    public void setData(List<BaseLocation> data) {
         this.data = data;
     }
 }

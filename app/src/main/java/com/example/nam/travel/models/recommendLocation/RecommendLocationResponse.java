@@ -1,5 +1,6 @@
 package com.example.nam.travel.models.recommendLocation;
 
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,7 +19,7 @@ public class RecommendLocationResponse {
     private String resultMessage;
     @SerializedName("data")
     @Expose
-    private List<RecommendLocation> data = null;
+    private List<BaseLocation> data = null;
 
     /**
      * No args constructor for use in serialization
@@ -33,7 +34,7 @@ public class RecommendLocationResponse {
      * @param resultCode
      * @param resultMessage
      */
-    public RecommendLocationResponse(Integer resultCode, String resultMessage, List<RecommendLocation> data) {
+    public RecommendLocationResponse(Integer resultCode, String resultMessage, List<BaseLocation> data) {
         super();
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
@@ -56,11 +57,11 @@ public class RecommendLocationResponse {
         this.resultMessage = resultMessage;
     }
 
-    public List<RecommendLocation> getData() {
+    public List<BaseLocation> getData() {
         return data;
     }
 
-    public void setData(List<RecommendLocation> data) {
+    public void setData(List<BaseLocation> data) {
         this.data = data;
     }
 }

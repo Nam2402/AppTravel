@@ -9,22 +9,13 @@ import android.widget.Toast;
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.api.ApiInterface;
 import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
-import com.example.nam.travel.models.location.Picture;
-import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
 import com.example.nam.travel.models.typePlace.TypeDTO;
-import com.example.nam.travel.models.typePlace.TypeResponse;
 import com.example.nam.travel.presenters.places.PlacePresenter;
 import com.example.nam.travel.views.adapter.RecyclerViewDataAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {

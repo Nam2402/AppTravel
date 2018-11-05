@@ -2,25 +2,22 @@ package com.example.nam.travel.views.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -28,12 +25,12 @@ import java.util.List;
  */
 
 public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.ItemLocationHolder> {
-    private List<NewLocation> newLocationArrayList;
+    private List<BaseLocation> baseLocationArrayList;
     private Context mContext;
 
 
-    public NewLocationAdapter(List<NewLocation> newLocationArrayList, Context mContext) {
-        this.newLocationArrayList = newLocationArrayList;
+    public NewLocationAdapter(List<BaseLocation> baseLocationArrayList, Context mContext) {
+        this.baseLocationArrayList = baseLocationArrayList;
         this.mContext = mContext;
     }
 
@@ -48,10 +45,13 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
 
     @Override
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
-        NewLocation itemModel = newLocationArrayList.get(position);
+        BaseLocation itemModel = baseLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvCount.setText(itemModel.getSumRating() + " đánh giá");
-        holder.ratingBar.setRating(itemModel.getNumRating());
+
+        holder.tvCount.setText(itemModel.getNumRating() + " đánh giá");
+        float rating = getRating(itemModel.getSumRating(), itemModel.getNumRating());
+        holder.ratingBar.setRating(rating);
+
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -64,9 +64,14 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
         Picasso.with(mContext).load(urlImage).into(holder.itemImage);
     }
 
+    public float getRating(BigDecimal sumRating, long numRating) {
+        if(numRating == 0) return 0f;
+        return sumRating.floatValue() / numRating;
+    }
+
     @Override
     public int getItemCount() {
-        return (null != newLocationArrayList ? newLocationArrayList.size() : 0);
+        return (null != baseLocationArrayList ? baseLocationArrayList.size() : 0);
     }
 
     public class ItemLocationHolder extends RecyclerView.ViewHolder {

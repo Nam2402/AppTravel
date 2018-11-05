@@ -4,13 +4,14 @@ import com.example.nam.travel.models.location.Picture;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Created by Nam on 10/20/2018.
  */
 
-public class LocationForType {
+public class BaseLocation {
 
     @SerializedName("id")
     @Expose
@@ -18,9 +19,13 @@ public class LocationForType {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("introduction")
+    @SerializedName("numRating")
     @Expose
-    private String introduction;
+    private long numRating;
+    @SerializedName("sumRating")
+    @Expose
+    private BigDecimal sumRating;
+
     @SerializedName("pictureList")
     @Expose
     private List<Picture> pictureList = null;
@@ -29,21 +34,37 @@ public class LocationForType {
      * No args constructor for use in serialization
      *
      */
-    public LocationForType() {
+    public BaseLocation() {
     }
 
     /**
      *
      * @param name
      * @param pictureList
-     * @param introduction
      */
-    public LocationForType(Integer id, String name, String introduction, List<Picture> pictureList) {
+    public BaseLocation(Integer id, String name, long numRating, BigDecimal sumRating, List<Picture> pictureList) {
         super();
         this.id = id;
         this.name = name;
-        this.introduction = introduction;
+        this.sumRating = sumRating;
+        this.numRating = numRating;
         this.pictureList = pictureList;
+    }
+
+    public void setSumRating(BigDecimal sumRating) {
+        this.sumRating = sumRating;
+    }
+
+    public void setNumRating(long numRating) {
+        this.numRating = numRating;
+    }
+
+    public long getNumRating() {
+        return numRating;
+    }
+
+    public BigDecimal getSumRating() {
+        return sumRating;
     }
 
     public Integer getId() {
@@ -62,14 +83,6 @@ public class LocationForType {
         this.name = name;
     }
 
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
     public List<Picture> getPictureList() {
         return pictureList;
     }
@@ -80,6 +93,6 @@ public class LocationForType {
 
     @Override
     public String toString() {
-        return this.getId() + " | " + this.getName() + " | " + this.getIntroduction() + " | " + this.getPictureList().get(0).getImage();
+        return this.getId() + " | " + this.getName() + " | "  + this.getNumRating()+ " | " + this.getSumRating() + " | " + this.getPictureList().get(0).getImage();
     }
 }

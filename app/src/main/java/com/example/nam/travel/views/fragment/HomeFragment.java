@@ -11,13 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.nam.travel.R;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.models.recommendLocation.RecommendLocation;
-import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
 import com.example.nam.travel.presenters.recommendLocation.RecommendLocationPresenter;
-import com.example.nam.travel.views.adapter.NewLocationAdapter;
 import com.example.nam.travel.views.adapter.RecommendLocationAdapter;
-import com.example.nam.travel.views.newLocation.INewLocation;
 import com.example.nam.travel.views.place.PlaceActivity;
 import com.example.nam.travel.views.recommendLocation.IRecommendLocation;
 
@@ -29,7 +26,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IRe
   private RecommendLocationPresenter recommendLocationPresenter;
   private RecyclerView recyclerView;
   private RecommendLocationAdapter recommendLocationAdapter;
-  private List<RecommendLocation> recommendLocations;
+  private List<BaseLocation> recommendLocations;
 
   public HomeFragment(){
 
@@ -98,7 +95,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IRe
 
 
   @Override
-  public void getRecommendLocationSuccess(List<RecommendLocation> recommendLocations) {
+  public void getRecommendLocationSuccess(List<BaseLocation> recommendLocations) {
     this.recommendLocations = recommendLocations;
     if (recommendLocations != null) {
       recommendLocationAdapter = new RecommendLocationAdapter(recommendLocations,getContext());

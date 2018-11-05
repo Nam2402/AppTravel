@@ -3,19 +3,17 @@ package com.example.nam.travel.views.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nam.travel.R;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
 import com.example.nam.travel.views.adapter.NewLocationAdapter;
 import com.example.nam.travel.views.newLocation.INewLocation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +21,7 @@ public class NewLocationFragment extends Fragment implements INewLocation {
     private NewLocationPresenter newLocationPresenter;
     private RecyclerView recyclerView;
     private NewLocationAdapter newLocationAdapter;
-    private List<NewLocation> newLocationList;
+    private List<BaseLocation> baseLocationList;
     public NewLocationFragment(){
 
     }
@@ -47,10 +45,10 @@ public class NewLocationFragment extends Fragment implements INewLocation {
 
 
     @Override
-    public void getNewLocationSuccess(List<NewLocation> newLocations) {
-        this.newLocationList = newLocations;
-        if (newLocations != null) {
-            newLocationAdapter = new NewLocationAdapter(newLocations,getContext());
+    public void getNewLocationSuccess(List<BaseLocation> baseLocations) {
+        this.baseLocationList = baseLocations;
+        if (baseLocations != null) {
+            newLocationAdapter = new NewLocationAdapter(baseLocations,getContext());
             recyclerView.setAdapter(newLocationAdapter);
         }
 

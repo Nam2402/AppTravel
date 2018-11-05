@@ -7,17 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.models.recommendLocation.RecommendLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -25,10 +26,10 @@ import java.util.List;
  */
 
 public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLocationAdapter.ItemLocationHolder> {
-    private List<RecommendLocation> recommendLocations;
+    private List<BaseLocation> recommendLocations;
     private Context mContext;
 
-    public RecommendLocationAdapter(List<RecommendLocation> recommendLocations, Context mContext) {
+    public RecommendLocationAdapter(List<BaseLocation> recommendLocations, Context mContext) {
         this.recommendLocations = recommendLocations;
         this.mContext = mContext;
     }
@@ -42,10 +43,18 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
         return itemLocationHolder;
     }
 
+    public float getRating(BigDecimal sumRating, long numRating) {
+        if(numRating == 0) return 0f;
+        return sumRating.floatValue() / numRating;
+    }
+
     @Override
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
-        RecommendLocation itemModel = recommendLocations.get(position);
+        BaseLocation itemModel = recommendLocations.get(position);
         holder.tvTitle.setText(itemModel.getName());
+        holder.tvCount.setText(itemModel.getNumRating() + " đánh giá");
+        float rating = getRating(itemModel.getSumRating(), itemModel.getNumRating());
+        holder.ratingBar.setRating(rating);
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -56,6 +65,7 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
         }
 
         Picasso.with(mContext).load(urlImage).into(holder.itemImage);
+
 
     }
 
@@ -68,11 +78,15 @@ public class RecommendLocationAdapter extends RecyclerView.Adapter<RecommendLoca
         protected TextView tvTitle;
         protected ImageView itemImage;
         protected TextView tvCount;
+        protected RatingBar ratingBar;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_location_name);
             this.itemImage = itemView.findViewById(R.id.img_rc_location);
+            this.tvCount = itemView.findViewById(R.id.count);
+            this.ratingBar = itemView.findViewById(R.id.ratingBar);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
