@@ -10,15 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.views.login.EditProfileActivity;
 import com.example.nam.travel.views.login.LoginActivity;
+import com.example.nam.travel.views.login.SignupActivity;
 
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
-    ImageButton btnlogout;
     ImageView imageView;
+    TextView logout;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -31,25 +33,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void initControls(View view){
-        btnlogout =(ImageButton) view.findViewById(R.id.imgBtnLogout);
+
         imageView = (ImageView) view.findViewById(R.id.edit);
+        logout = (TextView) view.findViewById(R.id.logout);
 
     }
 
     public void addEvents(){
-        btnlogout.setOnClickListener(this);
         imageView.setOnClickListener(this);
+        logout.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.imgBtnLogout:
-                startActivity(new Intent(getActivity(),LoginActivity.class));
-                break;
+
             case R.id.edit:
                 startActivity(new Intent(getActivity(), EditProfileActivity.class));
+                break;
+            case R.id.logout:
+                startActivity(new Intent(getActivity(), SignupActivity.class) );
 
 
 
