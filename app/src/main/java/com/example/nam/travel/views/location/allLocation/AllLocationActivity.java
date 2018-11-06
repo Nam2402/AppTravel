@@ -9,11 +9,11 @@ import com.example.nam.travel.R;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
 import com.example.nam.travel.views.adapter.LocationMoreAdapter;
-import com.example.nam.travel.views.newLocation.INewLocation;
+import com.example.nam.travel.views.baseLocation.IBaseLocation;
 
 import java.util.List;
 
-public class AllLocationActivity extends AppCompatActivity implements INewLocation {
+public class AllLocationActivity extends AppCompatActivity implements IBaseLocation {
     private NewLocationPresenter newLocationPresenter;
     private RecyclerView recyclerView;
     private LocationMoreAdapter locationMoreAdapter;
@@ -35,7 +35,7 @@ public class AllLocationActivity extends AppCompatActivity implements INewLocati
     }
 
     @Override
-    public void getNewLocationSuccess(List<BaseLocation> baseLocations) {
+    public void getBaseLocationSuccess(List<BaseLocation> baseLocations) {
         this.baseLocationList = baseLocations;
         if (baseLocations != null) {
             locationMoreAdapter = new LocationMoreAdapter(baseLocations,getApplicationContext());
@@ -47,7 +47,7 @@ public class AllLocationActivity extends AppCompatActivity implements INewLocati
 
 
     @Override
-    public void getNewLocationFailure() {
+    public void getBaseLocationFailure() {
 
     }
 

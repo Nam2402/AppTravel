@@ -1,8 +1,7 @@
 package com.example.nam.travel.api;
 
-import com.example.nam.travel.models.newLocation.NewLocationResponse;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationResponse;
 
-import com.example.nam.travel.models.recommendLocation.RecommendLocationResponse;
 
 import com.example.nam.travel.models.typePlace.TypeResponse;
 
@@ -15,10 +14,13 @@ public interface ApiInterface {
     Call<TypeResponse> getNameCategory();
 
     @GET("/top-10-new-locations")
-    Call<NewLocationResponse> getInfoNewLocation();
+    Call<BaseLocationResponse> getInfoNewLocation();
 
     @GET("/locations/recommends/1")
-    Call<RecommendLocationResponse> getInfoRecommendLocation();
+    Call<BaseLocationResponse> getInfoRecommendLocation();
+
+    @GET("/app/location/top-10-highlight")
+    Call<BaseLocationResponse> getInfoHighlightLocation();
 
 
 //    @GET("/location-profile-by-category/4")

@@ -12,16 +12,16 @@ import android.widget.Button;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
-import com.example.nam.travel.models.recommendLocation.RecommendLocation;
 import com.example.nam.travel.presenters.recommendLocation.RecommendLocationPresenter;
 import com.example.nam.travel.views.adapter.RecommendLocationAdapter;
+import com.example.nam.travel.views.baseLocation.IBaseLocation;
 import com.example.nam.travel.views.place.PlaceActivity;
-import com.example.nam.travel.views.recommendLocation.IRecommendLocation;
+
 
 import java.util.List;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener , IRecommendLocation {
+public class HomeFragment extends Fragment implements View.OnClickListener , IBaseLocation {
   Button btnPlace, btnEat, btnRest,btnShopping;
   private RecommendLocationPresenter recommendLocationPresenter;
   private RecyclerView recyclerView;
@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IRe
 
 
   @Override
-  public void getRecommendLocationSuccess(List<BaseLocation> recommendLocations) {
+  public void getBaseLocationSuccess(List<BaseLocation> recommendLocations) {
     this.recommendLocations = recommendLocations;
     if (recommendLocations != null) {
       recommendLocationAdapter = new RecommendLocationAdapter(recommendLocations,getContext());
@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IRe
 
 
   @Override
-  public void getRecommendLocationFailure() {
+  public void getBaseLocationFailure() {
 
   }
 }

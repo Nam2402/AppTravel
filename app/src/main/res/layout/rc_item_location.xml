@@ -61,13 +61,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_all_location_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/lv_location_tv_deatail_margin_top"
-                android:textSize="@dimen/lv_location_tv_detail_size"
-                android:text="Địa chỉ" />
 
         </LinearLayout>
     </LinearLayout>

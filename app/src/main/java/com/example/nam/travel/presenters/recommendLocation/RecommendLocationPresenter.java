@@ -2,8 +2,8 @@ package com.example.nam.travel.presenters.recommendLocation;
 
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiInterface;
-import com.example.nam.travel.models.recommendLocation.RecommendLocationResponse;
-import com.example.nam.travel.views.recommendLocation.IRecommendLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationResponse;
+import com.example.nam.travel.views.baseLocation.IBaseLocation;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,34 +14,34 @@ import retrofit2.Response;
  */
 
 public class RecommendLocationPresenter implements  IRecommendLocationPresenter {
-    private IRecommendLocation iRecommendLocation;
+    private IBaseLocation iRecommendLocation;
 
-    public RecommendLocationPresenter(IRecommendLocation iRecommendLocation) {
+    public RecommendLocationPresenter(IBaseLocation iRecommendLocation) {
         this.iRecommendLocation = iRecommendLocation;
     }
 
     @Override
     public void getRecommendLocation() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<RecommendLocationResponse> call = apiService.getInfoRecommendLocation();
-        call.enqueue(new Callback<RecommendLocationResponse>() {
+        Call<BaseLocationResponse> call = apiService.getInfoRecommendLocation();
+        call.enqueue(new Callback<BaseLocationResponse>() {
             @Override
-            public void onResponse(Call<RecommendLocationResponse> call, Response<RecommendLocationResponse> response) {
+            public void onResponse(Call<BaseLocationResponse> call, Response<BaseLocationResponse> response) {
                 if (response.code() >= 300) {
-                    iRecommendLocation.getRecommendLocationFailure();
+                    iRecommendLocation.getBaseLocationFailure();
                 } else if (response.code() >= 200) {
-                    RecommendLocationResponse recommendLocationResponse = response.body();
+                    BaseLocationResponse recommendLocationResponse = response.body();
                     if (recommendLocationResponse.getResultCode() == 200) {
-                        iRecommendLocation.getRecommendLocationSuccess(recommendLocationResponse.getData());
+                        iRecommendLocation.getBaseLocationSuccess(recommendLocationResponse.getData());
                     }
                 } else {
 
-                    iRecommendLocation.getRecommendLocationFailure();                }
+                    iRecommendLocation.getBaseLocationFailure();                }
             }
 
             @Override
-            public void onFailure(Call<RecommendLocationResponse> call, Throwable t) {
-                iRecommendLocation.getRecommendLocationFailure();            }
+            public void onFailure(Call<BaseLocationResponse> call, Throwable t) {
+                iRecommendLocation.getBaseLocationFailure();            }
         });
 
     }

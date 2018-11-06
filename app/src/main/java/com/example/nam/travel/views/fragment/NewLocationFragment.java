@@ -12,12 +12,12 @@ import com.example.nam.travel.R;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
 import com.example.nam.travel.views.adapter.NewLocationAdapter;
-import com.example.nam.travel.views.newLocation.INewLocation;
+import com.example.nam.travel.views.baseLocation.IBaseLocation;
 
 import java.util.List;
 
 
-public class NewLocationFragment extends Fragment implements INewLocation {
+public class NewLocationFragment extends Fragment implements IBaseLocation {
     private NewLocationPresenter newLocationPresenter;
     private RecyclerView recyclerView;
     private NewLocationAdapter newLocationAdapter;
@@ -45,7 +45,7 @@ public class NewLocationFragment extends Fragment implements INewLocation {
 
 
     @Override
-    public void getNewLocationSuccess(List<BaseLocation> baseLocations) {
+    public void getBaseLocationSuccess(List<BaseLocation> baseLocations) {
         this.baseLocationList = baseLocations;
         if (baseLocations != null) {
             newLocationAdapter = new NewLocationAdapter(baseLocations,getContext());
@@ -57,7 +57,7 @@ public class NewLocationFragment extends Fragment implements INewLocation {
 
 
     @Override
-    public void getNewLocationFailure() {
+    public void getBaseLocationFailure() {
 
     }
 

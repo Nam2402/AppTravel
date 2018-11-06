@@ -1,4 +1,4 @@
-package com.example.nam.travel.models.recommendLocation;
+package com.example.nam.travel.models.locationOfPlaceCategory;
 
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.google.gson.annotations.Expose;
@@ -7,10 +7,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by Nam on 11/4/2018.
+ * Created by Nam on 10/31/2018.
  */
 
-public class RecommendLocationResponse {
+public class BaseLocationResponse {
     @SerializedName("result_code")
     @Expose
     private Integer resultCode;
@@ -25,7 +25,7 @@ public class RecommendLocationResponse {
      * No args constructor for use in serialization
      *
      */
-    public RecommendLocationResponse() {
+    public BaseLocationResponse() {
     }
 
     /**
@@ -34,7 +34,7 @@ public class RecommendLocationResponse {
      * @param resultCode
      * @param resultMessage
      */
-    public RecommendLocationResponse(Integer resultCode, String resultMessage, List<BaseLocation> data) {
+    public BaseLocationResponse(Integer resultCode, String resultMessage, List<BaseLocation> data) {
         super();
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
