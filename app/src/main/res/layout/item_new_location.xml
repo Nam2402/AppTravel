@@ -64,17 +64,7 @@
                     android:paddingLeft="@dimen/text_padding"
                     />
             </LinearLayout>
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout"
-                android:paddingBottom="@dimen/address_padding_bottom"
-                android:paddingLeft="@dimen/location_title_padding"
-                android:paddingRight="@dimen/location_title_padding"
-                android:textSize="@dimen/address"
-                android:text="Đà Nẵng"
-                />
+
 
 
 

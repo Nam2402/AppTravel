@@ -2,24 +2,23 @@ package com.example.nam.travel.views.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.listener.ItemClickListener;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -27,12 +26,12 @@ import java.util.List;
  */
 
 public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.ItemLocationHolder> {
-    private List<NewLocation> newLocationArrayList;
+    private List<BaseLocation> baseLocationArrayList;
     private Context mContext;
 
 
-    public NewLocationAdapter(List<NewLocation> newLocationArrayList, Context mContext) {
-        this.newLocationArrayList = newLocationArrayList;
+    public NewLocationAdapter(List<BaseLocation> baseLocationArrayList, Context mContext) {
+        this.baseLocationArrayList = baseLocationArrayList;
         this.mContext = mContext;
     }
 
@@ -47,9 +46,13 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
 
     @Override
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
-        NewLocation itemModel = newLocationArrayList.get(position);
+        BaseLocation itemModel = baseLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvAddress.setText(itemModel.getAddress());
+
+        holder.tvCount.setText(itemModel.getNumRating() + " đánh giá");
+        float rating = getRating(itemModel.getSumRating(), itemModel.getNumRating());
+        holder.ratingBar.setRating(rating);
+
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -60,30 +63,57 @@ public class NewLocationAdapter extends RecyclerView.Adapter<NewLocationAdapter.
         }
 
         Picasso.with(mContext).load(urlImage).into(holder.itemImage);
+
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Long idLocation = baseLocationArrayList.get(position).getId();
+                Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                intent.putExtra("idLocation", idLocation);
+                mContext.startActivity(intent);
+            }
+        });
+    }
+
+    public float getRating(BigDecimal sumRating, long numRating) {
+        if(numRating == 0) return 0f;
+        return sumRating.floatValue() / numRating;
     }
 
     @Override
     public int getItemCount() {
-        return (null != newLocationArrayList ? newLocationArrayList.size() : 0);
+        return (null != baseLocationArrayList ? baseLocationArrayList.size() : 0);
     }
 
-    public class ItemLocationHolder extends RecyclerView.ViewHolder {
+    public class ItemLocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvAddress;
-
+        protected TextView tvCount;
+        protected RatingBar ratingBar;
+        private ItemClickListener itemClickListener;
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_title);
             this.itemImage = itemView.findViewById(R.id.image_location);
-            this.tvAddress = itemView.findViewById(R.id.address);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
-                    mContext.startActivity(intent);
-                }
-            });
+            this.ratingBar = itemView.findViewById(R.id.ratingBar);
+            this.tvCount = itemView.findViewById(R.id.count);
+            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
+//                    mContext.startActivity(intent);
+//                }
+//            });
+        }
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v,getAdapterPosition(),false);
         }
     }
 }

@@ -6,7 +6,7 @@
         android:title="0392632750"
         android:visible="true" />
     <item
-        android:id="@+id/dropdown_phone2"
+        android:id="@+id/dropdown_mail"
         android:title="0392632750"
         android:visible="true" />
 

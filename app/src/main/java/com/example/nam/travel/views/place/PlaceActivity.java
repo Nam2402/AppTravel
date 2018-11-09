@@ -1,5 +1,6 @@
 package com.example.nam.travel.views.place;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,22 +10,13 @@ import android.widget.Toast;
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.api.ApiInterface;
 import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
-import com.example.nam.travel.models.location.Picture;
-import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
 import com.example.nam.travel.models.typePlace.TypeDTO;
-import com.example.nam.travel.models.typePlace.TypeResponse;
 import com.example.nam.travel.presenters.places.PlacePresenter;
 import com.example.nam.travel.views.adapter.RecyclerViewDataAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
@@ -35,12 +27,14 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
     private String urlImage = "";
     private PlacePresenter placePresenter;
     private PlaceActivity seft = this;
+    private Long idPlaceType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
+        Intent intent = getIntent();
+        idPlaceType = intent.getLongExtra("idType", 3L);
         this.mapped();
-
     }
 
 
@@ -49,7 +43,7 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
         this.recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         placePresenter = new PlacePresenter(this);
-        placePresenter.getPlaceCategory();
+        placePresenter.getPlaceCategory(idPlaceType);
     }
 
 

@@ -1,8 +1,10 @@
 package com.example.nam.travel.models.location;
 
+import com.example.nam.travel.models.review.ReviewPagination;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -11,46 +13,79 @@ import java.util.List;
  */
 
 public class LocationProfile {
-    @SerializedName("id")
-    @Expose
-    Long id;
-    @SerializedName("name")
-    @Expose
-    String name;
-    @SerializedName("introduction")
-    @Expose
-    String introduction;
-    @SerializedName("createdDate")
-    @Expose
-    Date createdDate;
-    @SerializedName("placeCategory")
-    @Expose
-    String placeCategory;
-    @SerializedName("content")
-    @Expose
-    String content;
-    @SerializedName("status")
-    @Expose
-    String  status;
-    @SerializedName("address")
-    @Expose
-    String  address;
-    @SerializedName("phone")
-    @Expose
-    String phone;
-    @SerializedName("email")
-    @Expose
-    String email;
-    @SerializedName("usersname")
-    @Expose
-    String usersname;
-    @SerializedName("duration")
-    @Expose
-    Long duration;
 
-    @SerializedName("pictureList")
-    @Expose
+    Long id;
+    String name;
+    String introduction;
+    String content;
+    String address;
+    String latLng;
+    String phone;
+    String email;
+
     List<Picture> pictureList;
+    boolean isFavorite;
+    BigDecimal sumRating;
+    long numRating;
+    ReviewPagination evaluationPaginationDTO;
+
+    public LocationProfile(Long id, String name, String introduction, String content, String address, String latLng, String phone, String email, List<Picture> pictureList, boolean isFavorite, BigDecimal sumRating, long numRating, ReviewPagination evaluationPaginationDTO) {
+        this.id = id;
+        this.name = name;
+        this.introduction = introduction;
+        this.content = content;
+        this.address = address;
+        this.latLng = latLng;
+        this.phone = phone;
+        this.email = email;
+        this.pictureList = pictureList;
+        this.isFavorite = isFavorite;
+        this.sumRating = sumRating;
+        this.numRating = numRating;
+        this.evaluationPaginationDTO = evaluationPaginationDTO;
+    }
+
+    public void setLatLng(String latLng) {
+        this.latLng = latLng;
+    }
+
+    public String getLatLng() {
+        return latLng;
+    }
+
+    public ReviewPagination getEvaluationPaginationDTO() {
+        return evaluationPaginationDTO;
+    }
+
+    public void setEvaluationPaginationDTO(ReviewPagination evaluationPaginationDTO) {
+        this.evaluationPaginationDTO = evaluationPaginationDTO;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+
+    public void setNumRating(long numRating) {
+        this.numRating = numRating;
+    }
+
+    public void setSumRating(BigDecimal sumRating) {
+        this.sumRating = sumRating;
+    }
+
+    public BigDecimal getSumRating() {
+        return sumRating;
+    }
+
+    public long getNumRating() {
+        return numRating;
+    }
+
 
     public Long getId() {
         return id;
@@ -76,21 +111,6 @@ public class LocationProfile {
         this.introduction = introduction;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getPlaceCategory() {
-        return placeCategory;
-    }
-
-    public void setPlaceCategory(String placeCategory) {
-        this.placeCategory = placeCategory;
-    }
 
     public String getContent() {
         return content;
@@ -98,14 +118,6 @@ public class LocationProfile {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getAddress() {
@@ -132,22 +144,6 @@ public class LocationProfile {
         this.email = email;
     }
 
-    public String getUsersname() {
-        return usersname;
-    }
-
-    public void setUsersname(String usersname) {
-        this.usersname = usersname;
-    }
-
-    public Long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Long duration) {
-        this.duration = duration;
-    }
-
     public List<Picture> getPictureList() {
         return pictureList;
     }
@@ -155,7 +151,6 @@ public class LocationProfile {
     public void setPictureList(List<Picture> pictureList) {
         this.pictureList = pictureList;
     }
-
 
 
 

@@ -25,9 +25,9 @@ public class PlacePresenter implements IPlacePresenter {
     }
 
     @Override
-    public void getPlaceCategory() {
+    public void getPlaceCategory(Long idType) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<TypeResponse> call = apiService.getNameCategory();
+        Call<TypeResponse> call = apiService.getNameCategory(idType);
         call.enqueue(new Callback<TypeResponse>() {
             @Override
             public void onResponse(Call<TypeResponse> call, Response<TypeResponse> response) {

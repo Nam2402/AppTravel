@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.nam.travel.R;
 import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
-import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.allLocation.AllLocationActivity;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
     @Override
     public void onBindViewHolder(ItemRowHolder holder, int position) {
         final String sectionName = dataList.get(position).getName();
-        List<LocationForType> listLocationOfCategory = dataList.get(position).getListLocationOfCategory();
+        List<BaseLocation> listLocationOfCategory = dataList.get(position).getListLocationOfCategory();
         holder.itemTitle.setText(sectionName);
         LocationListDataAdapter adapter = new LocationListDataAdapter(listLocationOfCategory, mContext);
         holder.recyclerView.setHasFixedSize(true);

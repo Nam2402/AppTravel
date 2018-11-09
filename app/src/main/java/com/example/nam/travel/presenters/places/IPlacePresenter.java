@@ -5,5 +5,5 @@ package com.example.nam.travel.presenters.places;
  */
 
 public interface IPlacePresenter {
-    public  void getPlaceCategory();
+    public  void getPlaceCategory(Long idType);
 }

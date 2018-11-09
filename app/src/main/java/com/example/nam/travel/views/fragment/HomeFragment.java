@@ -11,45 +11,44 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.nam.travel.R;
-import com.example.nam.travel.models.newLocation.NewLocation;
-import com.example.nam.travel.presenters.newLocation.NewLocationPresenter;
-import com.example.nam.travel.views.adapter.NewLocationAdapter;
+import com.example.nam.travel.constant.Constant;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
+import com.example.nam.travel.presenters.recommendLocation.RecommendLocationPresenter;
 import com.example.nam.travel.views.adapter.RecommendLocationAdapter;
-import com.example.nam.travel.views.newLocation.INewLocation;
+import com.example.nam.travel.views.baseLocation.IBaseLocation;
 import com.example.nam.travel.views.place.PlaceActivity;
+
 
 import java.util.List;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener , INewLocation {
+public class HomeFragment extends Fragment implements View.OnClickListener , IBaseLocation {
   Button btnPlace, btnEat, btnRest,btnShopping;
-  private NewLocationPresenter newLocationPresenter;
+  private RecommendLocationPresenter recommendLocationPresenter;
   private RecyclerView recyclerView;
   private RecommendLocationAdapter recommendLocationAdapter;
-  private List<NewLocation> newLocationList;
+  private List<BaseLocation> recommendLocations;
 
   public HomeFragment(){
 
   }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-      View view = inflater.inflate(R.layout.fragment_home, container, false);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-      initControls(view);
-      addEvents();
+    initControls(view);
+    addEvents();
 
-      recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
-      recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-      newLocationPresenter= new NewLocationPresenter(this);
-      getDataLocation();
-
-
+    recyclerView = (RecyclerView) view.findViewById(R.id.rc_location_recycler_view);
+    recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+    recommendLocationPresenter= new RecommendLocationPresenter(this);
+    getDataLocation();
 
 
-        return view;
-    }
+    return view;
+  }
 
 
 
@@ -69,36 +68,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener , INe
 
   @Override
   public void onClick(View view) {
+    Intent intent = new Intent(getActivity(), PlaceActivity.class);
     switch (view.getId()){
       case R.id.btn_place:
-        startActivity(new Intent(getActivity(),PlaceActivity.class));
+        intent.putExtra("idType", Constant.ID_TYPE_PLACE);
+        startActivity(intent);
         break;
       case R.id.btn_eat:
-        startActivity(new Intent(getActivity(), PlaceActivity.class));
+        intent.putExtra("idType", Constant.ID_TYPE_EAT_DRINK);
+        startActivity(intent);
         break;
       case  R.id.btn_rest:
-        startActivity(new Intent(getActivity(), PlaceActivity.class));
+        intent.putExtra("idType", Constant.ID_TYPE_REST);
+        startActivity(intent);
         break;
       case R.id.btn_shopping:
-        startActivity(new Intent(getActivity(), PlaceActivity.class));
+        intent.putExtra("idType", Constant.ID_TYPE_SHOPPING);
+        startActivity(intent);
         break;
-
     }
-
   }
 
   private void getDataLocation() {
     //get data place
-    newLocationPresenter.getNewLocation();
+    recommendLocationPresenter.getRecommendLocation();
   }
 
 
 
   @Override
-  public void getNewLocationSuccess(List<NewLocation> newLocations) {
-    this.newLocationList = newLocations;
-    if (newLocations != null) {
-      recommendLocationAdapter = new RecommendLocationAdapter(newLocations,getContext());
+  public void getBaseLocationSuccess(List<BaseLocation> recommendLocations) {
+    this.recommendLocations = recommendLocations;
+    if (recommendLocations != null) {
+      recommendLocationAdapter = new RecommendLocationAdapter(recommendLocations,getContext());
       recyclerView.setAdapter(recommendLocationAdapter);
     }
 
@@ -107,7 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener , INe
 
 
   @Override
-  public void getNewLocationFailure() {
+  public void getBaseLocationFailure() {
 
   }
 }

@@ -1,7 +1,7 @@
 package com.example.nam.travel.models.typePlace;
 
 import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
-import com.example.nam.travel.models.locationOfPlaceCategory.LocationForType;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,21 +12,21 @@ import java.util.ArrayList;
 public class TypeDTO {
     @SerializedName("topLocationOfType")
     @Expose
-    private LocationForType topLocationOfType;
+    private BaseLocation topLocationOfType;
     @SerializedName("listCategoryResponse")
     @Expose
     private ArrayList<CategoryResponseDTO> listCategoryResponse;
 
-    public TypeDTO(LocationForType topLocationOfType, ArrayList<CategoryResponseDTO> listCategoryResponse) {
+    public TypeDTO(BaseLocation topLocationOfType, ArrayList<CategoryResponseDTO> listCategoryResponse) {
         this.topLocationOfType = topLocationOfType;
         this.listCategoryResponse = listCategoryResponse;
     }
 
-    public LocationForType getTopLocationOfType() {
+    public BaseLocation getTopLocationOfType() {
         return topLocationOfType;
     }
 
-    public void setTopLocationOfType(LocationForType topLocationOfType) {
+    public void setTopLocationOfType(BaseLocation topLocationOfType) {
         this.topLocationOfType = topLocationOfType;
     }
 

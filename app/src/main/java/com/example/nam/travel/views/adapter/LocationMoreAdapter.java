@@ -12,25 +12,23 @@ import android.widget.TextView;
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
-import com.example.nam.travel.models.newLocation.NewLocation;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Nam on 11/3/2018.
  */
 
 public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapter.ItemLocationHolder> {
-    private List<NewLocation> newLocationArrayList;
+    private List<BaseLocation> baseLocationArrayList;
     private Context mContext;
 
 
-    public LocationMoreAdapter(List<NewLocation> newLocationArrayList, Context mContext) {
-        this.newLocationArrayList = newLocationArrayList;
+    public LocationMoreAdapter(List<BaseLocation> baseLocationArrayList, Context mContext) {
+        this.baseLocationArrayList = baseLocationArrayList;
         this.mContext = mContext;
     }
 
@@ -45,9 +43,8 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
 
     @Override
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
-        NewLocation itemModel = newLocationArrayList.get(position);
+        BaseLocation itemModel = baseLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
-        holder.tvAddress.setText(itemModel.getAddress());
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -62,23 +59,23 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
 
     @Override
     public int getItemCount() {
-        return (null != newLocationArrayList ? newLocationArrayList.size() : 0);
+        return (null != baseLocationArrayList ? baseLocationArrayList.size() : 0);
     }
 
     public class ItemLocationHolder extends RecyclerView.ViewHolder {
         protected TextView tvTitle;
-        protected CircleImageView itemImage;
+        protected ImageView itemImage;
         protected TextView tvAddress;
 
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_all_location_name);
             this.itemImage = itemView.findViewById(R.id.img_all_location);
-            this.tvAddress = itemView.findViewById(R.id.tv_all_location_address);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
                 }
             });
