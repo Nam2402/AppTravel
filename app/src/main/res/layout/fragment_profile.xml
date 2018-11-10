@@ -91,7 +91,7 @@
                     android:src="@android:drawable/ic_menu_edit" />
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -103,16 +103,7 @@
 
 
 
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/name"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/tv_email_marginTop"
-                    android:text="nam123@gmail.com"
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
+
             </RelativeLayout>
 
 
@@ -163,7 +154,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/blood_group"
+                    android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -198,7 +189,7 @@
                     android:clickable="true"
                     android:text="01692632750"
                     app:layout_constraintLeft_toRightOf="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/blood_group" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
 
 

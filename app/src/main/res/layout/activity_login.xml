@@ -13,7 +13,7 @@
         android:id="@+id/textInputLayoutEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_margintop"
+        android:layout_marginTop="@dimen/layout_login_margintop"
 
         >
         <EditText

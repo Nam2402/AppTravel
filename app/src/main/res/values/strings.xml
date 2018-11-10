@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">DN Travel</string>
     <string name="hint_email">Username</string>
-    <string name="hint_name">Name</string>
+    <string name="hint_fullname">Fullname</string>
     <string name="hint_pass">Password</string>
+    <string name="hint_adress">Address</string>
+    <string name="hint_phone">Phone</string>
     <string name="text_login">Login</string>
     <string name="text_login1"><u>Login</u></string>
     <string name="text_login_Facebook">Đăng nhập bằng Facebook</string>
@@ -38,8 +40,8 @@
     <string name="textview.text.edit_profile_title">Edit Profile</string>
     <string name="textview.text.edit_profile_name">Name*</string>
     <string name="textview.hint.edit_profile_name">Your name</string>
-    <string name="textview.text.edit_profile_sex_male">Nam</string>
-    <string name="textview.text.edit_profile_sex_female">Nữ</string>
+    <string name="textview.text.edit_profile_sex_male">Male</string>
+    <string name="textview.text.edit_profile_sex_female">Female</string>
 
     <string name="textview.text.edit_profile_address">Address</string>
     <string name="textview.hint.edit_profile_address">Your address</string>

@@ -6,6 +6,7 @@ import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationRespons
 
 
 import com.example.nam.travel.models.login.LoginResponse;
+import com.example.nam.travel.models.myProfile.MyProfileResponse;
 import com.example.nam.travel.models.review.ReviewPaginationResponse;
 import com.example.nam.travel.models.typePlace.TypeResponse;
 
@@ -15,6 +16,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -24,6 +26,9 @@ public interface ApiInterface {
     @POST("api/login")
     Call<LoginResponse> getToken(@Field("username") String username,
                                  @Field("password") String password);
+
+    @GET("api/user-profile")
+    Call<MyProfileResponse> getMyProfile(@Header("Authorization") String token);
 
     @GET("/app/place-type/{id_type}")
     Call<TypeResponse> getNameCategory(@Path("id_type") Long id_type);
