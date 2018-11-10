@@ -12,6 +12,8 @@ import com.example.nam.travel.views.adapter.ViewPagerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static String token = null;
+    public static boolean isLoggingIn = false;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;

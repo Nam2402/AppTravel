@@ -1,15 +1,13 @@
-package com.example.nam.travel.models.newLocation;
+package com.example.nam.travel.models.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 /**
- * Created by Nam on 10/31/2018.
+ * Created by Nam on 11/9/2018.
  */
 
-public class NewLocationResponse {
+public class LoginResponse {
     @SerializedName("result_code")
     @Expose
     private Integer resultCode;
@@ -18,13 +16,13 @@ public class NewLocationResponse {
     private String resultMessage;
     @SerializedName("data")
     @Expose
-    private List<NewLocation> data = null;
+    private String data;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public NewLocationResponse() {
+    public LoginResponse() {
     }
 
     /**
@@ -33,7 +31,7 @@ public class NewLocationResponse {
      * @param resultCode
      * @param resultMessage
      */
-    public NewLocationResponse(Integer resultCode, String resultMessage, List<NewLocation> data) {
+    public LoginResponse(Integer resultCode, String resultMessage, String data) {
         super();
         this.resultCode = resultCode;
         this.resultMessage = resultMessage;
@@ -56,11 +54,11 @@ public class NewLocationResponse {
         this.resultMessage = resultMessage;
     }
 
-    public List<NewLocation> getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(List<NewLocation> data) {
+    public void setData(String data) {
         this.data = data;
     }
 }

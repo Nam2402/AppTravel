@@ -1,4 +1,4 @@
-package com.example.nam.travel.views.login;
+package com.example.nam.travel.views.myProfile;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.views.login.LoginActivity;
 
 public class SignupActivity extends AppCompatActivity {
     Button btnLogin;
