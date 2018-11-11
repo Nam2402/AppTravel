@@ -34,6 +34,7 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
     private Long idPlaceType;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private String nameType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,8 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
 
         Intent intent = getIntent();
         idPlaceType = intent.getLongExtra("idType", 3L);
+        nameType = intent.getStringExtra("nameType");
+
         this.mapped();
     }
 
@@ -58,7 +61,7 @@ public class PlaceActivity extends AppCompatActivity implements IPlaceActivity {
     private void initCollapsingToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Địa Điểm");
+        setTitle(nameType);
         //Display back home button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

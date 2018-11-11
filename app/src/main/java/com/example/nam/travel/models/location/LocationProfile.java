@@ -19,7 +19,8 @@ public class LocationProfile {
     String introduction;
     String content;
     String address;
-    String latLng;
+    Double latitude;
+    Double longitude;
     String phone;
     String email;
 
@@ -29,13 +30,22 @@ public class LocationProfile {
     long numRating;
     ReviewPagination evaluationPaginationDTO;
 
-    public LocationProfile(Long id, String name, String introduction, String content, String address, String latLng, String phone, String email, List<Picture> pictureList, boolean isFavorite, BigDecimal sumRating, long numRating, ReviewPagination evaluationPaginationDTO) {
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public LocationProfile(Long id, String name, String introduction, String content, String address, Double latitude, Double longitude, String phone, String email, List<Picture> pictureList, boolean isFavorite, BigDecimal sumRating, long numRating, ReviewPagination evaluationPaginationDTO) {
         this.id = id;
         this.name = name;
         this.introduction = introduction;
         this.content = content;
         this.address = address;
-        this.latLng = latLng;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.phone = phone;
         this.email = email;
         this.pictureList = pictureList;
@@ -45,12 +55,12 @@ public class LocationProfile {
         this.evaluationPaginationDTO = evaluationPaginationDTO;
     }
 
-    public void setLatLng(String latLng) {
-        this.latLng = latLng;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public String getLatLng() {
-        return latLng;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public ReviewPagination getEvaluationPaginationDTO() {

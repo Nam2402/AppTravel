@@ -50,7 +50,6 @@ public class LoginPresenter implements ILoginPresenter {
                     if (response.body().getResultCode() == 200) {
                         //Save token
                         MainActivity.token = response.body().getData();
-                        String s = MainActivity.token;
                         iLoginActivity.getTokenSuccess(response.body().getData());
                     }
                 }

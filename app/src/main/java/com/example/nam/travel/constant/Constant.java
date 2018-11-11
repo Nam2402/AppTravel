@@ -6,6 +6,13 @@ public class Constant {
     public static final Long ID_TYPE_REST = 5L;
     public static final Long ID_TYPE_SHOPPING = 6L;
 
+    public static final String NAME_TYPE_PLACE = "Địa Điểm";
+    public static final String NAME_TYPE_EAT_DRINK = "Ăn Uống";
+    public static final String NAME_TYPE_REST = "Nghỉ Ngơi";
+    public static final String NAME_TYPE_SHOPPING = "Mua Sắm";
+
+
+
     public static final int LENGTH_PASSWORD_MIN = 6;
     public static final int LENGTH_TITLE_IN_ITEM = 25;
     public static final int REQUEST_CODE_LOGIN = 200;

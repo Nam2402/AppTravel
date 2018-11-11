@@ -71,13 +71,6 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ItemLoca
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.itemImage = itemView.findViewById(R.id.image_location);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
-                    mContext.startActivity(intent);
-                }
-            });
         }
     }
 }

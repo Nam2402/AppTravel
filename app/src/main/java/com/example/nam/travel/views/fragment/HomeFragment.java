@@ -72,18 +72,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener , IBa
     switch (view.getId()){
       case R.id.btn_place:
         intent.putExtra("idType", Constant.ID_TYPE_PLACE);
+        intent.putExtra("nameType", Constant.NAME_TYPE_PLACE);
         startActivity(intent);
         break;
       case R.id.btn_eat:
         intent.putExtra("idType", Constant.ID_TYPE_EAT_DRINK);
+        intent.putExtra("nameType", Constant.NAME_TYPE_EAT_DRINK);
         startActivity(intent);
         break;
       case  R.id.btn_rest:
         intent.putExtra("idType", Constant.ID_TYPE_REST);
+        intent.putExtra("nameType", Constant.NAME_TYPE_REST);
+
         startActivity(intent);
         break;
       case R.id.btn_shopping:
         intent.putExtra("idType", Constant.ID_TYPE_SHOPPING);
+        intent.putExtra("nameType", Constant.NAME_TYPE_SHOPPING);
         startActivity(intent);
         break;
     }

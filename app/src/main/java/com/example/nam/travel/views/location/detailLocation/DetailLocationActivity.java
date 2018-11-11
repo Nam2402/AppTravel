@@ -3,9 +3,12 @@ package com.example.nam.travel.views.location.detailLocation;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,7 +44,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DetailLocationActivity extends FragmentActivity implements View.OnClickListener, MenuItem.OnMenuItemClickListener,OnMapReadyCallback, IDetailLocationActivity{
+public class DetailLocationActivity extends AppCompatActivity implements View.OnClickListener, MenuItem.OnMenuItemClickListener,OnMapReadyCallback, IDetailLocationActivity{
     private Long idLocation;
     private ImageView btnLike, btnComment, btnNote, pictureTop;
     private DetailLocationPresenter detailLocationPresenter;
@@ -56,6 +59,8 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
     private ReviewAdapter reviewAdapter;
     private int crrPage, sumPage;
     private ProgressBar pbLoadMore;
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +80,7 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
 
     public void mapped() {
         showMenu = (ImageView) findViewById(R.id.show_dropdown_menu);
@@ -161,7 +167,7 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
         if(locationProfile != null) {
             mMap = googleMap;
             mMap.setMinZoomPreference(12);
-            LatLng ny = getLaLng(locationProfile.getLatLng());
+            LatLng ny = new LatLng(locationProfile.getLatitude(), locationProfile.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(ny));
         }
     }
@@ -169,13 +175,6 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         return false;
-    }
-
-    public LatLng getLaLng(String latLng) {
-        String[] latLngArr = latLng.split("\\|");
-        double lat = Double.parseDouble(latLngArr[0]);
-        double lng = Double.parseDouble(latLngArr[1]);
-        return new LatLng(lat,lng);
     }
 
     @Override
@@ -199,13 +198,14 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
         txtAddress.setText(locationProfile.getAddress());
         txtDetailLocation.setText(locationProfile.getContent());
 
-        locationProfile.setLatLng("16.061482|108.223197");
+//        locationProfile.setLatitude(16.061482);
+//        locationProfile.setLongitude(108.223197);
 
 
+        LatLng sydney = new LatLng(locationProfile.getLatitude(), locationProfile.getLongitude());
 
-        LatLng sydney = getLaLng(locationProfile.getLatLng());
-        mMap.setMinZoomPreference(12);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Bảo tàng chăm"));
+        mMap.setMinZoomPreference(14);
+        mMap.addMarker(new MarkerOptions().position(sydney).title(locationProfile.getName()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         Picasso.with(this).load(urlImage).into(pictureTop);
@@ -230,8 +230,32 @@ public class DetailLocationActivity extends FragmentActivity implements View.OnC
 
         recyclerViewReview.setLayoutManager( new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewReview.setAdapter(reviewAdapter);
+        initCollapsingToolbar();
 
     }
+    private void initCollapsingToolbar() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        String name = locationProfile.getName();
+        setTitle(name);
+        //Display back home button
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void getDetailLocationFailure() {
