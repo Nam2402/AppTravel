@@ -23,22 +23,12 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 
             />
-    <!--<TextView-->
-        <!--android:id="@+id/tvTitle"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:textSize="@dimen/text_size_large"-->
-        <!--android:textStyle="bold"-->
-        <!--/>-->
+
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
         android:orientation="vertical"
         android:weightSum="7"
         >
