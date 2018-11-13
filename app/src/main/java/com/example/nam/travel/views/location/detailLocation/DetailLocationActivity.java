@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,13 +23,12 @@ import com.example.nam.travel.api.ApiImageClient;
 import com.example.nam.travel.models.location.LocationProfile;
 import com.example.nam.travel.models.review.Review;
 import com.example.nam.travel.models.review.ReviewPagination;
-import com.example.nam.travel.models.typePlace.TypeDTO;
 import com.example.nam.travel.presenters.detailLocation.DetailLocationPresenter;
-import com.example.nam.travel.presenters.places.PlacePresenter;
 import com.example.nam.travel.presenters.review.ReviewPresenter;
 import com.example.nam.travel.views.adapter.PictureAdapter;
-import com.example.nam.travel.views.adapter.RecyclerViewDataAdapter;
 import com.example.nam.travel.views.adapter.ReviewAdapter;
+import com.example.nam.travel.views.note.NoteActivity;
+import com.example.nam.travel.views.review.CommentActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -119,15 +117,16 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
         switch (view.getId()) {
             case R.id.btn_comment:
                 Intent intent = new Intent(DetailLocationActivity.this, CommentActivity.class);
+                intent.putExtra("idLocation", idLocation);
                 startActivity(intent);
                 break;
             case R.id.btn_note:
                 intent = new Intent(DetailLocationActivity.this, NoteActivity.class);
+                intent.putExtra("idLocation", idLocation);
                 startActivity(intent);
                 break;
             case R.id.btn_like:
-                locationProfile.setFavorite(!locationProfile.isFavorite());
-                setColorForBtnFavorite();
+                detailLocationPresenter.favoriteLocation(idLocation);
                 break;
             case R.id.tv_load_more:
                 reviewPresenter.getMoreReview(locationProfile.getId(), crrPage + 1);
@@ -159,6 +158,19 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
         } else {
             btnLike.setImageResource(R.drawable.ic_favorite_border_black_24dp);
         }
+    }
+
+    @Override
+    public void favoriteLocationFailure() {
+        Toast.makeText(getBaseContext(), "Favorite Location Failure", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void favoriteLocationSuccess() {
+        Toast.makeText(getBaseContext(), "Favorite Location Success", Toast.LENGTH_SHORT).show();
+        locationProfile.setFavorite(!locationProfile.isFavorite());
+
+        setColorForBtnFavorite();
     }
 
     @Override

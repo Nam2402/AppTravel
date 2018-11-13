@@ -34,8 +34,8 @@
         <activity android:name=".views.myProfile.EditProfileActivity" />
         <activity android:name=".views.location.detailLocation.DetailLocationActivity" />
         <activity android:name=".views.location.allLocation.AllLocationActivity" />
-        <activity android:name=".views.location.detailLocation.CommentActivity" />
-        <activity android:name=".views.location.detailLocation.NoteActivity" />
+        <activity android:name=".views.review.CommentActivity" />
+        <activity android:name=".views.note.NoteActivity" />
         <activity android:name=".views.location.detailLocation.LoveLocationActivity"></activity>
     </application>
 

@@ -6,4 +6,6 @@ package com.example.nam.travel.presenters.detailLocation;
 
 public interface IDetailLocationPresenter {
     public void getDetailLocation(Long idLocation);
+
+    public void favoriteLocation(Long idLocation);
 }

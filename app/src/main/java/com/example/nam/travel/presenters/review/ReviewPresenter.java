@@ -1,9 +1,15 @@
 package com.example.nam.travel.presenters.review;
 
+import android.util.Log;
+
+import com.example.nam.travel.MainActivity;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiInterface;
+import com.example.nam.travel.api.ApiResponse;
 import com.example.nam.travel.models.location.DetailLocationResponse;
+import com.example.nam.travel.models.login.LoginResponse;
 import com.example.nam.travel.models.review.ReviewPaginationResponse;
+import com.example.nam.travel.models.review.ReviewRequest;
 import com.example.nam.travel.presenters.detailLocation.IDetailLocationPresenter;
 import com.example.nam.travel.views.location.detailLocation.IDetailLocationActivity;
 
@@ -22,6 +28,7 @@ public class ReviewPresenter implements IReviewPresenter {
     public ReviewPresenter(IDetailLocationActivity iDetailLocation) {
         this.iDetailLocation = iDetailLocation;
     }
+
 
     @Override
     public void getMoreReview(Long idLocation, int nextPage) {

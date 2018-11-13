@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.nam.travel.views.location.detailLocation.NoteActivity">
+    tools:context="com.example.nam.travel.views.note.NoteActivity">
 
     <RelativeLayout
         android:id="@+id/rlTitle"
@@ -34,6 +34,7 @@
 
         >
             <EditText
+                android:id="@+id/edt_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text|textMultiLine"
@@ -44,6 +45,7 @@
 
 
         <Button
+            android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -1,7 +1,9 @@
 package com.example.nam.travel.presenters.detailLocation;
 
+import com.example.nam.travel.MainActivity;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiInterface;
+import com.example.nam.travel.api.ApiResponse;
 import com.example.nam.travel.models.location.DetailLocationResponse;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationResponse;
 import com.example.nam.travel.presenters.highlightLocation.IHighlightLocationPresenter;
@@ -25,6 +27,35 @@ public class DetailLocationPresenter implements IDetailLocationPresenter {
     }
 
     @Override
+    public void favoriteLocation(Long idLocation) {
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<ApiResponse> call = apiService.favoriteLocation(idLocation, MainActivity.token);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.code() >= 300) {
+                    iDetailLocation.favoriteLocationFailure();
+                } else if (response.code() >= 200) {
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse.getResult_code() == 200) {
+                        iDetailLocation.favoriteLocationSuccess();
+                    } else {
+                        iDetailLocation.favoriteLocationFailure();
+                    }
+                } else {
+                    iDetailLocation.favoriteLocationFailure();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                iDetailLocation.favoriteLocationFailure();
+            }
+        });
+
+    }
+
+    @Override
     public void getDetailLocation(Long idLocation) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<DetailLocationResponse> call = apiService.getInfoDetailLocation(idLocation);
@@ -36,15 +67,12 @@ public class DetailLocationPresenter implements IDetailLocationPresenter {
                 } else if (response.code() >= 200) {
                     DetailLocationResponse detailLocationResponse = response.body();
                     if (detailLocationResponse.getResult_code() == 200) {
-
                         iDetailLocation.getDetailLocationSuccess(detailLocationResponse.getData());
-
                     }
                 } else {
 
                     iDetailLocation.getDetailLocationFailure();                }
             }
-
             @Override
             public void onFailure(Call<DetailLocationResponse> call, Throwable t) {
                 iDetailLocation.getDetailLocationFailure();            }

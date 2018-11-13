@@ -12,4 +12,9 @@ public interface IDetailLocationActivity {
     public void getLoadMoreReviewSuccess(ReviewPagination reviewPagination);
 
     public void getLoadMoreReviewFailure();
+
+    public void favoriteLocationSuccess();
+
+    public void favoriteLocationFailure();
+
 }
