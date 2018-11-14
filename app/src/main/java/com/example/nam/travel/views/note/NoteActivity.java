@@ -98,7 +98,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void getNoteLocationFailure() {
-        Toast.makeText(getBaseContext(), "get note Location Failure", Toast.LENGTH_SHORT).show();
+
     }
 
 

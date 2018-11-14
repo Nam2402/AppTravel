@@ -81,12 +81,14 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
             edReview.setText(reviewDTO.getContent());
             isUpdate = true;
             btReview.setText("Cập nhật");
+        } else {
+            Toast.makeText(getBaseContext(), "DO NOTHING", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void getReviewFailure() {
-        Toast.makeText(getBaseContext(), "Get review Failure", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

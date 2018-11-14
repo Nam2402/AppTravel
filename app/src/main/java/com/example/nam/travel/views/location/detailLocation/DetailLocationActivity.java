@@ -167,9 +167,7 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
 
     @Override
     public void favoriteLocationSuccess() {
-        Toast.makeText(getBaseContext(), "Favorite Location Success", Toast.LENGTH_SHORT).show();
         locationProfile.setFavorite(!locationProfile.isFavorite());
-
         setColorForBtnFavorite();
     }
 
@@ -206,6 +204,7 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
         float rating = getRating(locationProfile.getSumRating(),locationProfile.getNumRating());
         ratingBar.setRating(rating);
         count.setText("" + locationProfile.getNumRating() + " đánh giá");
+
         setColorForBtnFavorite();
         txtAddress.setText(locationProfile.getAddress());
         txtDetailLocation.setText(locationProfile.getContent());

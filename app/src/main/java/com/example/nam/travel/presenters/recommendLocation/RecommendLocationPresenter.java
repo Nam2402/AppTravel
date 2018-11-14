@@ -1,5 +1,6 @@
 package com.example.nam.travel.presenters.recommendLocation;
 
+import com.example.nam.travel.MainActivity;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiInterface;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationResponse;
@@ -23,7 +24,7 @@ public class RecommendLocationPresenter implements  IRecommendLocationPresenter 
     @Override
     public void getRecommendLocation() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<BaseLocationResponse> call = apiService.getInfoRecommendLocation();
+        Call<BaseLocationResponse> call = apiService.getInfoRecommendLocation(MainActivity.token);
         call.enqueue(new Callback<BaseLocationResponse>() {
             @Override
             public void onResponse(Call<BaseLocationResponse> call, Response<BaseLocationResponse> response) {

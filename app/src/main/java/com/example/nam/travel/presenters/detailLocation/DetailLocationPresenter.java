@@ -58,7 +58,7 @@ public class DetailLocationPresenter implements IDetailLocationPresenter {
     @Override
     public void getDetailLocation(Long idLocation) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<DetailLocationResponse> call = apiService.getInfoDetailLocation(idLocation);
+        Call<DetailLocationResponse> call = apiService.getInfoDetailLocation(idLocation, MainActivity.token);
         call.enqueue(new Callback<DetailLocationResponse>() {
             @Override
             public void onResponse(Call<DetailLocationResponse> call, Response<DetailLocationResponse> response) {

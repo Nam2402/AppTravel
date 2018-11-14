@@ -25,7 +25,7 @@ public class LocationProfile {
     String email;
 
     List<Picture> pictureList;
-    boolean isFavorite;
+    boolean favorite;
     BigDecimal sumRating;
     long numRating;
     ReviewPagination evaluationPaginationDTO;
@@ -38,7 +38,7 @@ public class LocationProfile {
         this.latitude = latitude;
     }
 
-    public LocationProfile(Long id, String name, String introduction, String content, String address, Double latitude, Double longitude, String phone, String email, List<Picture> pictureList, boolean isFavorite, BigDecimal sumRating, long numRating, ReviewPagination evaluationPaginationDTO) {
+    public LocationProfile(Long id, String name, String introduction, String content, String address, Double latitude, Double longitude, String phone, String email, List<Picture> pictureList, boolean favorite, BigDecimal sumRating, long numRating, ReviewPagination evaluationPaginationDTO) {
         this.id = id;
         this.name = name;
         this.introduction = introduction;
@@ -49,7 +49,7 @@ public class LocationProfile {
         this.phone = phone;
         this.email = email;
         this.pictureList = pictureList;
-        this.isFavorite = isFavorite;
+        this.favorite = favorite;
         this.sumRating = sumRating;
         this.numRating = numRating;
         this.evaluationPaginationDTO = evaluationPaginationDTO;
@@ -72,11 +72,11 @@ public class LocationProfile {
     }
 
     public boolean isFavorite() {
-        return isFavorite;
+        return this.favorite;
     }
 
     public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
+        this.favorite = favorite;
     }
 
 

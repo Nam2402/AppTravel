@@ -23,6 +23,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -35,7 +36,7 @@ public interface ApiInterface {
     @POST("api/app/review-location")
     Call<ApiResponse> reviewLocation(@Body ReviewRequest reviewRequest, @Header("Authorization") String token);
 
-    @POST("api/app/edit-review-location")
+    @PUT("api/app/edit-review-location")
     Call<ApiResponse> editReviewLocation(@Body ReviewRequest reviewRequest, @Header("Authorization") String token);
 
     @FormUrlEncoded
@@ -45,25 +46,25 @@ public interface ApiInterface {
     @POST("api/app/add-note-location")
     Call<ApiResponse> noteLocation(@Body Note note, @Header("Authorization") String token);
 
-    @POST("api/app/edit-note-location")
+    @PUT("api/app/edit-note-location")
     Call<ApiResponse> editNoteLocation(@Body Note note, @Header("Authorization") String token);
 
-    @POST("/app/place-category/{idCat}")
+    @POST("app/place-category/{idCat}")
     Call<CategoryResponse> getCategoryInfo(@Path("idCat") Long idCat);
 
     @GET("api/user-profile")
     Call<MyProfileResponse> getMyProfile(@Header("Authorization") String token);
 
-    @GET("/app/place-type/{id_type}")
+    @GET("app/place-type/{id_type}")
     Call<TypeResponse> getNameCategory(@Path("id_type") Long id_type);
 
-    @GET("/top-10-new-locations")
+    @GET("top-10-new-locations")
     Call<BaseLocationResponse> getInfoNewLocation();
 
-    @GET("/locations/recommends/6")
-    Call<BaseLocationResponse> getInfoRecommendLocation();
+    @GET("locations/recommends")
+    Call<BaseLocationResponse> getInfoRecommendLocation( @Header("Authorization") String token);
 
-    @GET("/app/location/top-10-highlight")
+    @GET("app/location/top-10-highlight")
     Call<BaseLocationResponse> getInfoHighlightLocation();
 
     @GET("app/location/{idLocation}")
@@ -72,7 +73,7 @@ public interface ApiInterface {
     @GET("api/app/location-review/{idLocation}")
     Call<ReviewResponse> getReviewOfUserForLocation(@Path("idLocation") Long idLocation, @Header("Authorization") String token);
 
-    @GET("/api/app/location-note/{idLocation}")
+    @GET("api/app/location-note/{idLocation}")
     Call<NoteReponse> getNoteOfUserForLocation(@Path("idLocation") Long idLocation, @Header("Authorization") String token);
 
     @GET("/app/review/{idLocation}/{crrPage}")
