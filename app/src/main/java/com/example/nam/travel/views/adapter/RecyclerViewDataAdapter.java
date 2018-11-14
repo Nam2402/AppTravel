@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nam.travel.R;
+import com.example.nam.travel.listener.ItemClickListener;
 import com.example.nam.travel.models.categoryPlace.CategoryResponseDTO;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.allLocation.AllLocationActivity;
@@ -47,10 +48,14 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         holder.recyclerView.setAdapter(adapter);
         holder.recyclerView.setRecycledViewPool(recycledViewPool);
-        holder.btnMore.setOnClickListener(new View.OnClickListener() {
+        holder.setItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view, int position, boolean isLongClick) {
+                Long idCat = dataList.get(position).getId();
+                String nameCat = dataList.get(position).getName();
                 Intent intent = new Intent(mContext, AllLocationActivity.class);
+                intent.putExtra("idCat", idCat);
+                intent.putExtra("nameCat", nameCat);
                 mContext.startActivity(intent);
             }
         });
@@ -64,7 +69,8 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         return (null != dataList ? dataList.size() : 0);
     }
 
-    public class ItemRowHolder extends RecyclerView.ViewHolder {
+    public class ItemRowHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private ItemClickListener itemClickListener;
         protected TextView itemTitle;
         protected RecyclerView recyclerView;
         protected Button btnMore;
@@ -74,7 +80,20 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
             this.itemTitle = itemView.findViewById(R.id.itemTitle);
             this.recyclerView = itemView.findViewById(R.id.recycler_view_list);
             this.btnMore = itemView.findViewById(R.id.btnMore);
+            btnMore.setOnClickListener(this);
 
         }
+        public void setItemClickListener(ItemClickListener itemClickListener)
+        {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v,getAdapterPosition(),false);
+        }
+
+
     }
+
 }

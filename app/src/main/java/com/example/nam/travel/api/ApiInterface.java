@@ -1,7 +1,9 @@
 package com.example.nam.travel.api;
 
+import com.example.nam.travel.models.categoryPlace.CategoryResponse;
 import com.example.nam.travel.models.location.DetailLocationResponse;
 import com.example.nam.travel.models.location.LocationProfile;
+import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationResponse;
 
 
@@ -47,6 +49,13 @@ public interface ApiInterface {
 
     @GET("/app/review/{idLocation}/{crrPage}")
     Call<ReviewPaginationResponse> getReviewPagination(@Path("idLocation") Long idLocation, @Path("crrPage") int crrPage);
+
+    /*Get love location of user*/
+    @GET("api/app/locations/user-like")
+    Call<BaseLocationResponse> getLoveLocation(@Header("Authorization") String token);
+
+    @GET("/app/place-category/{idCat}")
+    Call<CategoryResponse> getCategoryInfo(@Path("idCat") Long idCat);
 
 
 
