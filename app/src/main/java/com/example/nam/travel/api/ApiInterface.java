@@ -49,9 +49,6 @@ public interface ApiInterface {
     @PUT("api/app/edit-note-location")
     Call<ApiResponse> editNoteLocation(@Body Note note, @Header("Authorization") String token);
 
-    @POST("app/place-category/{idCat}")
-    Call<CategoryResponse> getCategoryInfo(@Path("idCat") Long idCat);
-
     @GET("api/user-profile")
     Call<MyProfileResponse> getMyProfile(@Header("Authorization") String token);
 
@@ -78,5 +75,12 @@ public interface ApiInterface {
 
     @GET("/app/review/{idLocation}/{crrPage}")
     Call<ReviewPaginationResponse> getReviewPagination(@Path("idLocation") Long idLocation, @Path("crrPage") int crrPage);
+
+    /*Get love location of user*/
+    @GET("api/app/locations/user-like")
+    Call<BaseLocationResponse> getLoveLocation(@Header("Authorization") String token);
+
+    @GET("/app/place-category/{idCat}")
+    Call<CategoryResponse> getCategoryInfo(@Path("idCat") Long idCat);
 
 }

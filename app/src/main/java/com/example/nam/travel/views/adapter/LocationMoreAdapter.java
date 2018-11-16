@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.nam.travel.R;
 import com.example.nam.travel.api.ApiClient;
 import com.example.nam.travel.api.ApiImageClient;
+import com.example.nam.travel.listener.ItemClickListener;
 import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
@@ -55,6 +56,16 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
         }
 
         Picasso.with(mContext).load(urlImage).into(holder.itemImage);
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Long idLocation = baseLocationArrayList.get(position).getId();
+                Intent intent = new Intent(mContext, DetailLocationActivity.class);
+                intent.putExtra("idLocation", idLocation);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -62,23 +73,25 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
         return (null != baseLocationArrayList ? baseLocationArrayList.size() : 0);
     }
 
-    public class ItemLocationHolder extends RecyclerView.ViewHolder {
+    public class ItemLocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView tvTitle;
         protected ImageView itemImage;
         protected TextView tvAddress;
-
+        private ItemClickListener itemClickListener;
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_all_location_name);
             this.itemImage = itemView.findViewById(R.id.img_all_location);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, DetailLocationActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mContext.startActivity(intent);
-                }
-            });
+            itemView.setOnClickListener(this);
+        }
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v,getAdapterPosition(),false);
         }
     }
 }
