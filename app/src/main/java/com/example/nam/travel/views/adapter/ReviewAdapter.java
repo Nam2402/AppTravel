@@ -54,7 +54,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ItemLocati
         Review review = listReview.get(position);
         String urlImage = "";
         holder.txtUsername.setText(review.getNameUser());
-        String regrex = "dd/MM/YYYY";
+        String regrex = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(regrex);
 
         holder.txtDateReview.setText(simpleDateFormat.format(review.getDateReview()));

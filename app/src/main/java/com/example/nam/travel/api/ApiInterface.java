@@ -79,8 +79,4 @@ public interface ApiInterface {
     @GET("/app/review/{idLocation}/{crrPage}")
     Call<ReviewPaginationResponse> getReviewPagination(@Path("idLocation") Long idLocation, @Path("crrPage") int crrPage);
 
-
-
-
-
 }

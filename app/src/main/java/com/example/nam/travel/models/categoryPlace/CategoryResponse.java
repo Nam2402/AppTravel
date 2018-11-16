@@ -2,6 +2,7 @@ package com.example.nam.travel.models.categoryPlace;
 
 import com.example.nam.travel.api.ApiResponse;
 
+
 public class CategoryResponse extends ApiResponse {
     private CategoryResponseDTO data;
 
