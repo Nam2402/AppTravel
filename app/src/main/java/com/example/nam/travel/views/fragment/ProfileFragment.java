@@ -21,6 +21,8 @@ import com.example.nam.travel.views.myProfile.SignupActivity;
 
 
 public class ProfileFragment extends Fragment implements View.OnClickListener, IMyProfileActivity {
+    String fullname, address, phone;
+    Integer gender;
     ImageView imageView;
     TextView mylove;
     TextView logout;
@@ -49,31 +51,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
         myProfilePresenter = new MyProfilePresenter(this);
 
     }
-
-    public void addEvents(){
-        imageView.setOnClickListener(this);
-        mylove.setOnClickListener(this);
-        logout.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-
-            case R.id.edit:
-                startActivity(new Intent(getActivity(), EditProfileActivity.class));
-                break;
-            case R.id.mylove:
-                startActivity(new Intent(getActivity(), LoveLocationActivity.class));
-                break;
-            case R.id.logout:
-                startActivity(new Intent(getActivity(), LoginActivity.class) );
-                break;
-
-        }
-
-    }
     private void getProfile() {
 
         String token = MainActivity.token;
@@ -93,6 +70,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
         tvFullname.setText(myProfile.getFullname());
         tvPhone.setText(myProfile.getPhone());
         tvAddress.setText(myProfile.getAddress());
+        fullname = myProfile.getFullname();
+        address = myProfile.getAddress();
+        phone = myProfile.getPhone();
+        gender = myProfile.getGender();
         if(myProfile.getGender() ==1){
             tvGender.setText("Male");
         }else {
@@ -111,4 +92,35 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
         tvPhone.setText("--");
         tvAddress.setText("--");
     }
+
+    public void addEvents(){
+        imageView.setOnClickListener(this);
+        mylove.setOnClickListener(this);
+        logout.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+
+            case R.id.edit:
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                intent.putExtra("fullname",fullname);
+                intent.putExtra("address",address);
+                intent.putExtra("phone",phone);
+                intent.putExtra("gender",gender);
+                startActivity(intent);
+                break;
+            case R.id.mylove:
+                startActivity(new Intent(getActivity(), LoveLocationActivity.class));
+                break;
+            case R.id.logout:
+                startActivity(new Intent(getActivity(), LoginActivity.class) );
+                break;
+
+        }
+
+    }
+
 }

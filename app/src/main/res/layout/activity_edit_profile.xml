@@ -116,7 +116,8 @@
                         android:text="@string/textview.text.edit_profile_sex_male"
                         android:id="@+id/radioMale"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        />
                     <RadioButton
                         android:layout_marginLeft="32dp"
                         android:id="@+id/radioFemale"
