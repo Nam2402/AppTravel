@@ -9,6 +9,10 @@
     android:background="@drawable/background_screen"
     tools:context="com.example.nam.travel.views.login.LoginActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
         android:layout_width="match_parent"
@@ -16,6 +20,7 @@
         android:layout_marginTop="@dimen/layout_login_margintop"
 
         >
+
         <EditText
             android:id="@+id/edt_email"
             android:layout_width="match_parent"
@@ -88,36 +93,21 @@
         android:textSize="@dimen/text_size_large"
         />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/edt_margin_right"
+            android:background="@android:color/transparent"
+            android:text="@string/text_sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_size_medium" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txt_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:hint="@string/text_not_account"
-        android:padding="@dimen/text_padding"
-        android:textColor="@color/blue"
-        android:textSize="@dimen/text_size_small" />
-
-
-    <Button
-        android:id="@+id/btn_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txt_sign_up"
-
-        android:layout_alignBottom="@+id/txt_sign_up"
-        android:layout_alignEnd="@+id/btn_login"
-        android:layout_alignRight="@+id/btn_login"
-        android:background="@android:color/transparent"
-
-        android:text="@string/text_sign_up"
-        android:textAllCaps="false"
-        android:textColor="@color/blue"
-        android:textSize="@dimen/text_size_small" />
-
-
+</LinearLayout>
 </RelativeLayout>

@@ -75,9 +75,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
         phone = myProfile.getPhone();
         gender = myProfile.getGender();
         if(myProfile.getGender() ==1){
-            tvGender.setText("Male");
+            tvGender.setText("Nam");
         }else {
-            tvGender.setText("Female");
+            tvGender.setText("Nữ");
         }
 
     }

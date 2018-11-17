@@ -14,16 +14,15 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@color/tabBarColor"
         >
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/white"
-            android:text="@string/textview.text.edit_profile_title"
-            android:textSize="@dimen/text_size_large"
-            android:textStyle="bold"
+        <android.support.v7.widget.Toolbar
+            app:titleTextColor="@color/white"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
             />
 
 
@@ -78,7 +77,7 @@
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/textview.hint.edit_profile_name"/>
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +89,7 @@
                 android:id="@+id/edtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/textview.hint.edit_profile_address"/>
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +101,7 @@
                 android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/textview.hint.edit_profile_phone"/>
+               />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
