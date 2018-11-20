@@ -9,6 +9,7 @@ import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocationRespons
 
 
 import com.example.nam.travel.models.login.LoginResponse;
+import com.example.nam.travel.models.myProfile.EditProfileResponse;
 import com.example.nam.travel.models.myProfile.MyProfileResponse;
 import com.example.nam.travel.models.review.ReviewPaginationResponse;
 import com.example.nam.travel.models.review.ReviewRequest;
@@ -82,5 +83,8 @@ public interface ApiInterface {
 
     @GET("/app/place-category/{idCat}")
     Call<CategoryResponse> getCategoryInfo(@Path("idCat") Long idCat);
+
+    @PUT("api/app/edit-user")
+    Call<EditProfileResponse> editProfileUser(@Body RequestBody json,  @Header("Authorization") String token);
 
 }

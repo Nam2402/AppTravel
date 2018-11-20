@@ -55,6 +55,8 @@
     <string name="message_logging_in">Logging in...</string>
     <string name="message_invalid_username_empty">Tên đăng nhập không được trống!</string>
     <string name="message_invalid_password_empty">Mật khẩu không được trống!</string>
-
+    <string name="message_invalid_fullname_empty">Họ tên không được trống!</string>
+    <string name="message_invalid_address_empty">Địa chỉ không được trống!</string>
+    <string name="message_invalid_phone_empty">Số điện thoại không được trống!</string>
 
 </resources>
