@@ -1,5 +1,6 @@
 package com.example.nam.travel.views.location.detailLocation;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -118,7 +119,7 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
             case R.id.btn_comment:
                 Intent intent = new Intent(DetailLocationActivity.this, CommentActivity.class);
                 intent.putExtra("idLocation", idLocation);
-                startActivity(intent);
+                startActivityForResult(intent,1);
                 break;
             case R.id.btn_note:
                 intent = new Intent(DetailLocationActivity.this, NoteActivity.class);
@@ -204,6 +205,7 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
         float rating = getRating(locationProfile.getSumRating(),locationProfile.getNumRating());
         ratingBar.setRating(rating);
         count.setText("" + locationProfile.getNumRating() + " đánh giá");
+
 
         setColorForBtnFavorite();
         txtAddress.setText(locationProfile.getAddress());
@@ -310,5 +312,39 @@ public class DetailLocationActivity extends AppCompatActivity implements View.On
     public void getLoadMoreReviewFailure() {
         Toast.makeText(getBaseContext(), "Get Location Failure", Toast.LENGTH_SHORT).show();
         pbLoadMore.setVisibility(View.GONE);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == CommentActivity.OK_RESULT_ADD_COMMENT) {
+                this.listReview.removeAll(this.listReview);
+
+                float crrSumRating = ratingBar.getRating() * locationProfile.getNumRating();
+                long rating = data.getLongExtra("rating", 0L);
+                locationProfile.setNumRating(locationProfile.getNumRating() + 1);
+
+                float newRating = (crrSumRating + rating) / locationProfile.getNumRating();
+                ratingBar.setRating(newRating);
+                count.setText("" + locationProfile.getNumRating() + " đánh giá");
+
+                reviewPresenter.getMoreReview(locationProfile.getId(), 1);
+            } else if(resultCode == CommentActivity.OK_RESULT_EDIT_COMMENT) {
+                this.listReview.removeAll(this.listReview);
+
+                float crrSumRating = ratingBar.getRating() * locationProfile.getNumRating();
+                long rating = data.getLongExtra("rating", 0L);
+
+                float newRating = (crrSumRating + rating) / locationProfile.getNumRating();
+                ratingBar.setRating(newRating);
+
+                reviewPresenter.getMoreReview(locationProfile.getId(), 1);
+            }
+            else if (resultCode == 0) {
+                System.out.println("RESULT CANCELLED");
+            }
+        }
     }
 }

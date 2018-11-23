@@ -1,5 +1,6 @@
 package com.example.nam.travel.views.review;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,9 @@ import com.example.nam.travel.presenters.review.AddReviewPresenter;
 import com.example.nam.travel.presenters.review.IAddReviewPresenter;
 
 public class CommentActivity extends AppCompatActivity implements View.OnClickListener, ICommentActivity{
+    public static final int OK_RESULT_ADD_COMMENT = 10;
+    public static final int OK_RESULT_EDIT_COMMENT = 11;
+
     private IAddReviewPresenter iAddReviewPresenter;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
@@ -28,6 +32,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     private boolean isUpdate = false;
     private Button btReview;
     private Long idLocation;
+    private Long difRating = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.btn_review :
                 long rating = (long) Math.round(ratingBar.getRating());
+                difRating = rating - difRating;
                 String comment = edReview.getText().toString();
                 ReviewRequest reviewRequest = new ReviewRequest(idLocation, rating, comment);
                 if(isUpdate) {
@@ -77,6 +83,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void getReviewSuccess(ReviewDTO reviewDTO) {
         if(reviewDTO != null) {
+            difRating = reviewDTO.getScore();
             ratingBar.setRating(reviewDTO.getScore());
             edReview.setText(reviewDTO.getContent());
             isUpdate = true;
@@ -103,8 +110,12 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void addReviewSuccess() {
-        onBackPressed();
+        Intent intent = new Intent();
+        intent.putExtra("rating",difRating);
+        setResult(CommentActivity.OK_RESULT_ADD_COMMENT, intent);
+        finish();
     }
+
 
     @Override
     public void addReviewFailure() {
@@ -113,7 +124,10 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void editReviewSuccess(){
-        onBackPressed();
+        Intent intent = new Intent();
+        intent.putExtra("rating",difRating);
+        setResult(CommentActivity.OK_RESULT_EDIT_COMMENT, intent);
+        finish();
     }
 
     @Override
