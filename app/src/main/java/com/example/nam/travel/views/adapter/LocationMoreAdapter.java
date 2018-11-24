@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.nam.travel.R;
@@ -17,6 +18,7 @@ import com.example.nam.travel.models.locationOfPlaceCategory.BaseLocation;
 import com.example.nam.travel.views.location.detailLocation.DetailLocationActivity;
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -46,6 +48,9 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
     public void onBindViewHolder(ItemLocationHolder holder, int position) {
         BaseLocation itemModel = baseLocationArrayList.get(position);
         holder.tvTitle.setText(itemModel.getName());
+        holder.tvCount.setText(itemModel.getNumRating() + " đánh giá");
+        float rating = getRating(itemModel.getSumRating(), itemModel.getNumRating());
+        holder.ratingBar.setRating(rating);
         String urlImage = "";
         if(itemModel.getPictureList().size() > 0) {
             urlImage = itemModel.getPictureList().get(0).getImage();
@@ -67,6 +72,10 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
             }
         });
     }
+    public float getRating(BigDecimal sumRating, long numRating) {
+        if(numRating == 0) return 0f;
+        return sumRating.floatValue() / numRating;
+    }
 
     @Override
     public int getItemCount() {
@@ -76,12 +85,15 @@ public class LocationMoreAdapter extends RecyclerView.Adapter<LocationMoreAdapte
     public class ItemLocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView tvTitle;
         protected ImageView itemImage;
-        protected TextView tvAddress;
+        protected TextView tvCount;
+        protected RatingBar ratingBar;
         private ItemClickListener itemClickListener;
         public ItemLocationHolder(View itemView) {
             super(itemView);
             this.tvTitle = itemView.findViewById(R.id.tv_all_location_name);
             this.itemImage = itemView.findViewById(R.id.img_all_location);
+            this.ratingBar = itemView.findViewById(R.id.ratingBar);
+            this.tvCount = itemView.findViewById(R.id.count);
             itemView.setOnClickListener(this);
         }
 
