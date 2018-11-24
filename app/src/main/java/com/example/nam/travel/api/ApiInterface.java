@@ -14,6 +14,7 @@ import com.example.nam.travel.models.myProfile.MyProfileResponse;
 import com.example.nam.travel.models.review.ReviewPaginationResponse;
 import com.example.nam.travel.models.review.ReviewRequest;
 import com.example.nam.travel.models.review.ReviewResponse;
+import com.example.nam.travel.models.signup.SignUpResponse;
 import com.example.nam.travel.models.typePlace.TypeResponse;
 
 import okhttp3.RequestBody;
@@ -33,6 +34,8 @@ public interface ApiInterface {
     @POST("api/login")
     Call<LoginResponse> getToken(@Field("username") String username,
                                  @Field("password") String password);
+    @POST("api/sign-up-new-account")
+    Call<SignUpResponse> signupAccount(@Body RequestBody json);
 
     @POST("api/app/review-location")
     Call<ApiResponse> reviewLocation(@Body ReviewRequest reviewRequest, @Header("Authorization") String token);

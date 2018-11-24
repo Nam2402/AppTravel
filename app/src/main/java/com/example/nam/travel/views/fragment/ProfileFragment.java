@@ -17,7 +17,6 @@ import com.example.nam.travel.views.location.detailLocation.LoveLocationActivity
 import com.example.nam.travel.views.login.LoginActivity;
 import com.example.nam.travel.views.myProfile.EditProfileActivity;
 import com.example.nam.travel.views.myProfile.IMyProfileActivity;
-import com.example.nam.travel.views.myProfile.SignupActivity;
 
 
 public class ProfileFragment extends Fragment implements View.OnClickListener, IMyProfileActivity {

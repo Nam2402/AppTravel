@@ -18,7 +18,7 @@ import com.example.nam.travel.R;
 import com.example.nam.travel.constant.Common;
 import com.example.nam.travel.constant.Constant;
 import com.example.nam.travel.presenters.login.LoginPresenter;
-import com.example.nam.travel.views.myProfile.SignupActivity;
+import com.example.nam.travel.views.signup.SignupActivity;
 
 import org.json.JSONObject;
 

@@ -21,4 +21,12 @@ public class Constant {
     public static final String USERNAME = "Username";
     public static final String PASSWORD = "Password";
     public static final String REMEMBER_ME = "RememberMe";
+
+
+
+    public static String USERNAME_EXIST_MESSAGE_DISPLAY = "Tài khoản không hợp lệ";
+    public static String FULLNAME_INVALID_FORMAT_DISPLAY = "Họ tên không hợp lệ";
+    public static String PHONE_INVALID_FORMAT_DISPLAY = "Số điện thoại không hợp lệ";
+    public static String LENGTH_OF_PASSWORD_MESSAGE_DISPLAY = "Mật khẩu không hợp lệ";
+
 }
