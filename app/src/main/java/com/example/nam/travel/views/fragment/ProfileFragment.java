@@ -25,6 +25,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
     ImageView imageView;
     TextView mylove;
     TextView logout;
+    private boolean isLoggingIn;
     private TextView tvFullname,tvPhone, tvAddress,tvGender;
     private MyProfilePresenter myProfilePresenter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -115,7 +116,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
                 startActivity(new Intent(getActivity(), LoveLocationActivity.class));
                 break;
             case R.id.logout:
-                startActivity(new Intent(getActivity(), LoginActivity.class) );
+                MainActivity.token = null;
+                Intent intent1 = new Intent(getActivity(), LoginActivity.class);
+                intent1.putExtra("finish", true);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent1);
                 break;
 
         }
