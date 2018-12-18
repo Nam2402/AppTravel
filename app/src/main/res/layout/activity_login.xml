@@ -52,7 +52,7 @@
             android:layout_marginTop="@dimen/edt_margin_top"
             android:layout_marginBottom="@dimen/edt_margin_bottom"
             android:padding="@dimen/text_padding"
-
+            android:textColor="@color/white"
             android:hint="@string/hint_pass"
             android:textSize="@dimen/text_size_large"
             android:inputType="textPassword" />
